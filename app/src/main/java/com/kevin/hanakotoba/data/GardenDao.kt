@@ -20,7 +20,7 @@ interface GardenDao {
      */
     @Transaction
     @Query("SELECT * FROM flower WHERE id IN (SELECT DISTINCT(flower_id) FROM garden)")
-    fun getPlantedGardens(): Flow<List<PlantAndGardenPlantings>>
+    fun getPlantedGardens(): Flow<List<FlowerAndGarden>>
 
     @Insert
     suspend fun insertGarden(gardenPlanting: Garden): Long
