@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.kevin.hanakotoba.R
 import com.kevin.hanakotoba.data.Flower
-import com.kevin.hanakotoba.databinding.ItemLayoutBinding
+import com.kevin.hanakotoba.databinding.ItemLayout2Binding
 import com.kevin.hanakotoba.fragments.FlowerDescription.FlowerDescription
 
 
@@ -15,26 +15,26 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
 
     private var flowerList = emptyList<Flower>()
 
-    inner class VH (val binding : ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class VH (val binding : ItemLayout2Binding) : RecyclerView.ViewHolder(binding.root){
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =ItemLayout2Binding.inflate(LayoutInflater.from(parent.context),parent,false)
         return VH(binding)
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val currentItem = flowerList[position]
-        holder.binding.textView.text = currentItem.name
+        holder.binding.userFlowerName.text = currentItem.name
 
         holder.itemView.setOnClickListener {
             val activity = holder.itemView.context as AppCompatActivity
 
-            //TODO: PASSING FLOWER'S ID INSTEAD OF NAME
+            //TODO: PASS FLOWER OBJECT INSTEAD OF THE NAME/ID ?
             val testFragment = FlowerDescription.newInstance(currentItem.name)
 
-            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView,testFragment)
+            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,testFragment)
                 .addToBackStack(null).commit()
 
 

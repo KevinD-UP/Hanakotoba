@@ -1,10 +1,10 @@
 package com.kevin.hanakotoba.fragments.MyFlowers
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,9 +13,11 @@ import com.kevin.hanakotoba.data.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentMyFlowersBinding
 import com.kevin.hanakotoba.fragments.ResearchFlowers.ResearchFlowersFragment
 
+//TODO: Enable watering button only when it's time
 class MyFlowersFragment : Fragment() {
 
     private lateinit var mFlowerViewModel : FlowerViewModel
+
     private lateinit var binding : FragmentMyFlowersBinding
 
     override fun onCreateView(
@@ -41,7 +43,7 @@ class MyFlowersFragment : Fragment() {
             val testFragment = ResearchFlowersFragment()
             val activity = requireActivity()
 
-            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView,testFragment)
+            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,testFragment)
                 .addToBackStack(null).commit()
         }
         return view

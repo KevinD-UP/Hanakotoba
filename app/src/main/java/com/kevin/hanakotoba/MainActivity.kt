@@ -1,7 +1,7 @@
 package com.kevin.hanakotoba
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.kevin.hanakotoba.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
