@@ -4,6 +4,8 @@ plugins {
 }
 
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.android.application'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdk 31
@@ -69,6 +71,19 @@ dependencies {
 
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    // Dagger Core
+    implementation "com.google.dagger:dagger:2.37"
+    kapt "com.google.dagger:dagger-compiler:2.37"
+
+// Dagger Android
+    api 'com.google.dagger:dagger-android:2.37'
+    api 'com.google.dagger:dagger-android-support:2.37'
+    kapt 'com.google.dagger:dagger-android-processor:2.37'
+
+// Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:2.37"
+    kapt "com.google.dagger:hilt-android-compiler:2.37"
 
 
     def lifecycle_version = "2.3.1"
