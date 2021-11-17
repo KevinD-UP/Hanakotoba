@@ -6,16 +6,21 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
+import com.kevin.hanakotoba.workers.SeedDatabaseWorker
+import com.kevin.hanakotoba.workers.SeedDatabaseWorker.Companion.KEY_FILENAME
 
 
 /**
  * The Room database for this app
  */
-@Database(entities = [GardenPlanting::class, Plant::class], version = 1, exportSchema = false)
+@Database(entities = [Garden::class, Flower::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun gardenPlantingDao(): GardenPlantingDao
-    abstract fun plantDao(): PlantDao
+    abstract fun gardenFloweringDao(): GardenDao
+    abstract fun flowerDao(): FlowerDao
 
     companion object {
 
@@ -28,16 +33,15 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
-        // Create and pre-populate the database. See this article for more details:
-        // https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1#4785
+        // Create and pre-populate the database.
         private fun buildDatabase(context: Context): AppDatabase {
-            return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
+            return Room.databaseBuilder(context, AppDatabase::class.java, "HanakotobaDB")
                 .addCallback(
                     object : RoomDatabase.Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>()
-                                .setInputData(workDataOf(KEY_FILENAME to PLANT_DATA_FILENAME))
+                                .setInputData(workDataOf(KEY_FILENAME to "flowers.json"))
                                 .build()
                             WorkManager.getInstance(context).enqueue(request)
                         }
