@@ -5,19 +5,19 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
+/**
+ * The Data Access Object for the Plant class.
+ */
 @Dao
-interface FlowerDAO {
+interface PlantDao {
+    @Query("SELECT * FROM flower ORDER BY name")
+    fun getPlants(): Flow<List<Flower>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addFlower(flower : Flower)
+    @Query("SELECT * FROM flower WHERE id = :plantId")
+    fun getPlant(plantId: String): Flow<Flower>
 
-    @Query("SELECT * FROM flower ORDER BY id ASC")
-    fun getFlowers() : LiveData<List<Flower>>
-
-    @Query("DELETE FROM flower")
-    fun deleteAllData()
-
-
-
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(plants: List<Flower>)
 }
