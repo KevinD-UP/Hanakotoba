@@ -36,5 +36,5 @@ data class Garden(
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var garden_Id: Long = 0
+    var gardenId: Long = 0
 }

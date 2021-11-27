@@ -1,4 +1,4 @@
-package com.kevin.hanakotoba.fragments.MyFlowers
+package com.kevin.hanakotoba.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
+import com.kevin.hanakotoba.UserFlowerDescriptionFragment
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
 
@@ -31,7 +32,7 @@ class MyFlowersAdapter : RecyclerView.Adapter<MyFlowersAdapter.VH>() {
 
 
         holder.binding.waterButton.setOnClickListener{
-            Toast.makeText(holder.itemView.context, "[MyFlowerAdapter - onBindViewholder] Water : " + currentItem.name, Toast.LENGTH_SHORT).show();
+            Toast.makeText(holder.itemView.context, "[MyFlowerAdapter - onBindViewholder] Water : " + currentItem.name, Toast.LENGTH_SHORT).show()
         }
 
         holder.itemView.setOnClickListener {

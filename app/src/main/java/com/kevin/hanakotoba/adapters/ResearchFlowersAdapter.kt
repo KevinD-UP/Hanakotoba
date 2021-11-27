@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.kevin.hanakotoba.FlowerDescription
 import com.kevin.hanakotoba.R
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayout2Binding
-import com.kevin.hanakotoba.fragments.FlowerDescription.FlowerDescription
-
 
 class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>() {
 
@@ -32,12 +31,10 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
             val activity = holder.itemView.context as AppCompatActivity
 
             //TODO: PASS FLOWER OBJECT INSTEAD OF THE NAME/ID ?
-            val testFragment = FlowerDescription.newInstance(currentItem.name)
+            /*val testFragment = FlowerDescription.newInstance(currentItem.name)
 
             activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,testFragment)
-                .addToBackStack(null).commit()
-
-
+                .addToBackStack(null).commit()*/
         }
 
     }

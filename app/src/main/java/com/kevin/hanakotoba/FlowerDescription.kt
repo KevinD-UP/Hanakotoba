@@ -10,8 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentFlowerDescriptionBinding
 
-private const val ARG_PARAM1 = "param1"
-
 class FlowerDescription : Fragment() {
 
     private lateinit var mFlowerViewModel : FlowerViewModel
@@ -21,9 +19,6 @@ class FlowerDescription : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            flowerName = it.getString(ARG_PARAM1)
-        }
     }
 
     override fun onCreateView(
@@ -39,20 +34,9 @@ class FlowerDescription : Fragment() {
 
         binding.flowerNameTxt.text = flowerName
         binding.addFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "[FlowerDescription - onCreateView] ADD : " + flowerName, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "[FlowerDescription - onCreateView] ADD : $flowerName", Toast.LENGTH_SHORT).show()
         }
 
         return view
-    }
-
-    //TODO: PASS FLOWER OBJECT INSTEAD OF THE NAME/ID ?
-    companion object {
-        @JvmStatic
-        fun newInstance(flowerName: String) =
-            FlowerDescription().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, flowerName)
-                }
-            }
     }
 }

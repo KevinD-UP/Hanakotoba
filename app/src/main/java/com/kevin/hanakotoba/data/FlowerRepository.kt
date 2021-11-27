@@ -1,5 +1,4 @@
 package com.kevin.hanakotoba.data
-
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -10,10 +9,10 @@ import javax.inject.Singleton
  * query execution off of the main thread.
  */
 @Singleton
-class PlantRepository @Inject constructor(private val flowerDao: FlowerDao) {
+class FlowerRepository @Inject constructor(private val flowerDao: FlowerDao) {
 
-    fun getPlants() = flowerDao.getFlowers()
+    fun getFlowers() = flowerDao.getFlowers()
 
-    fun getPlant(plantId: String) = flowerDao.getFlower(plantId)
+    fun getFlower(plantId: String) = flowerDao.getFlower(plantId)
 
 }
