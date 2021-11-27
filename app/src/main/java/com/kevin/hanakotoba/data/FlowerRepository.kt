@@ -10,10 +10,10 @@ import javax.inject.Singleton
  * query execution off of the main thread.
  */
 @Singleton
-class PlantRepository @Inject constructor(private val plantDao: FlowerDao) {
+class PlantRepository @Inject constructor(private val flowerDao: FlowerDao) {
 
-    fun getPlants() = plantDao.getPlants()
+    fun getPlants() = flowerDao.getFlowers()
 
-    fun getPlant(plantId: String) = plantDao.getPlant(plantId)
+    fun getPlant(plantId: String) = flowerDao.getFlower(plantId)
 
 }

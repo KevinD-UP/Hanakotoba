@@ -1,4 +1,4 @@
-package com.kevin.hanakotoba.fragments.MyFlowers
+package com.kevin.hanakotoba
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kevin.hanakotoba.R
-import com.kevin.hanakotoba.data.FlowerViewModel
+import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentMyFlowersBinding
-import com.kevin.hanakotoba.fragments.ResearchFlowers.ResearchFlowersFragment
+import com.kevin.hanakotoba.fragments.MyFlowers.MyFlowersAdapter
 
 //TODO: Enable watering button only when it's time
 class MyFlowersFragment : Fragment() {

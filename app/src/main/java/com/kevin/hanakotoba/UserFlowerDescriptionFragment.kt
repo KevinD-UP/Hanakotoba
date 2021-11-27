@@ -1,22 +1,21 @@
-package com.kevin.hanakotoba.fragments.FlowerDescription
+package com.kevin.hanakotoba
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.kevin.hanakotoba.R
-import com.kevin.hanakotoba.data.FlowerViewModel
-import com.kevin.hanakotoba.databinding.FragmentFlowerDescriptionBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.kevin.hanakotoba.viewmodels.FlowerViewModel
+import com.kevin.hanakotoba.databinding.FragmentUserFlowerDescriptionBinding
 
 private const val ARG_PARAM1 = "param1"
 
-class FlowerDescription : Fragment() {
+class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
 
+    private lateinit var binding : FragmentUserFlowerDescriptionBinding
     private lateinit var mFlowerViewModel : FlowerViewModel
-    private lateinit var binding : FragmentFlowerDescriptionBinding
 
     private var flowerName: String? = null
 
@@ -31,16 +30,21 @@ class FlowerDescription : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_flower_description,container,false)
+        val view = inflater.inflate(R.layout.fragment_user_flower_description, container, false)
 
+        binding= FragmentUserFlowerDescriptionBinding.bind(view)
         mFlowerViewModel = ViewModelProvider(this).get(FlowerViewModel::class.java)
-        binding = FragmentFlowerDescriptionBinding.bind(view)
-
 
         binding.flowerNameTxt.text = flowerName
-        binding.addFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "[FlowerDescription - onCreateView] ADD : " + flowerName, Toast.LENGTH_SHORT).show();
+
+        binding.deleteFlowerBtn.setOnClickListener {
+            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Delete ", Toast.LENGTH_SHORT).show();
+
+        }
+
+        binding.waterFlowerBtn.setOnClickListener {
+            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Water : ", Toast.LENGTH_SHORT).show();
+
         }
 
         return view
@@ -50,7 +54,7 @@ class FlowerDescription : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(flowerName: String) =
-            FlowerDescription().apply {
+            UserFlowerDescriptionFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, flowerName)
                 }

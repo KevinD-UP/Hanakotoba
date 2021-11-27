@@ -1,4 +1,4 @@
-package com.kevin.hanakotoba.fragments.ResearchFlowers
+package com.kevin.hanakotoba
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kevin.hanakotoba.R
-import com.kevin.hanakotoba.data.FlowerViewModel
+import com.kevin.hanakotoba.adapters.ResearchFlowersAdapter
+import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentResearchFlowersBinding
 
 

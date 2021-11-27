@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".GardenActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
-        android:name="com.kevin.hanakotoba.fragments.MainFragment"
+        android:name="com.kevin.hanakotoba.GardenFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

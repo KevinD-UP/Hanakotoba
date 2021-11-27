@@ -9,7 +9,7 @@ import androidx.room.Relation
  */
 data class FlowerAndGarden(
         @Embedded
-        val plant: Flower,
+        val flower: Flower,
 
         @Relation(parentColumn = "id", entityColumn = "flower_id")
         val gardenPlantings: List<Garden> = emptyList()

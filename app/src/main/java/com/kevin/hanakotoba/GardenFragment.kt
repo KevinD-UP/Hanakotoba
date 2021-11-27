@@ -1,4 +1,4 @@
-package com.kevin.hanakotoba.fragments
+package com.kevin.hanakotoba
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.tabs.TabLayoutMediator
-import com.kevin.hanakotoba.R
-import com.kevin.hanakotoba.databinding.FragmentMainBinding
-import com.kevin.hanakotoba.fragments.MyFlowers.MyFlowersFragment
-import com.kevin.hanakotoba.fragments.ResearchFlowers.ResearchFlowersFragment
+import com.kevin.hanakotoba.databinding.FragmentGardenBinding
+import com.kevin.hanakotoba.fragments.ViewPagerAdapter
 
-class MainFragment : Fragment() {
+class GardenFragment : Fragment() {
 
-    private lateinit var binding : FragmentMainBinding
+    private lateinit var binding : FragmentGardenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +22,9 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_main,container,false)
+        val view = inflater.inflate(R.layout.fragment_garden,container,false)
 
-        binding = FragmentMainBinding.bind(view)
+        binding = FragmentGardenBinding.bind(view)
 
         val names = listOf("MY FLOWERS","RESEARCH")
 

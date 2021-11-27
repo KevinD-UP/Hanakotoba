@@ -1,4 +1,4 @@
-package com.kevin.hanakotoba.fragments.ResearchFlowers
+package com.kevin.hanakotoba.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
