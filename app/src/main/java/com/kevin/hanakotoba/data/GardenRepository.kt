@@ -4,11 +4,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class GardenPlantingRepository @Inject constructor(
+class GardenRepository @Inject constructor(
     private val gardenPlantingDao: GardenDao
 ) {
 
-    suspend fun createGardenPlanting(plantId: String) {
+    suspend fun createGardenPlanting(plantId: Int) {
         val gardenPlanting = Garden(plantId)
         gardenPlantingDao.insertGarden(gardenPlanting)
     }

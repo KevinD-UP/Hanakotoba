@@ -12,7 +12,7 @@ import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
 
 
-class MyFlowersAdapter : RecyclerView.Adapter<MyFlowersAdapter.VH>() {
+class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
 
     private var flowerList = emptyList<Flower>()
 

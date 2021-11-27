@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentMyFlowersBinding
-import com.kevin.hanakotoba.adapters.MyFlowersAdapter
+import com.kevin.hanakotoba.adapters.MyFlowerAdapter
 
 //TODO: Enable watering button only when it's time
 class MyFlowersFragment : Fragment() {
@@ -28,7 +28,7 @@ class MyFlowersFragment : Fragment() {
         mFlowerViewModel = ViewModelProvider(this).get(FlowerViewModel::class.java)
 
         binding = FragmentMyFlowersBinding.bind(view)
-        val adapter = MyFlowersAdapter()
+        val adapter = MyFlowerAdapter()
         binding.rvMyFlowers.adapter = adapter
         binding.rvMyFlowers.layoutManager = LinearLayoutManager(requireContext())
 

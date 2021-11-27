@@ -31,7 +31,7 @@ class ResearchFlowersFragment : Fragment() {
         binding.rvResearchFlowers.layoutManager = LinearLayoutManager(requireContext())
 
         mFlowerViewModel = ViewModelProvider(this).get(FlowerViewModel::class.java)
-        mFlowerViewModel.getAllFlowers().observe(viewLifecycleOwner, Observer { flower ->
+        mFlowerViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
             adapter.setFlower(flower)
 
         })

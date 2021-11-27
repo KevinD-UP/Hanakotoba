@@ -19,7 +19,7 @@ import java.util.*
     indices = [Index("flower_id")]
 )
 data class Garden(
-    @ColumnInfo(name = "flower_id") val flowerId: String,
+    @ColumnInfo(name = "flower_id") val flowerId: Int,
 
     /**
      * Indicates when the [Flower] was planted. Used for showing notification when it's time
