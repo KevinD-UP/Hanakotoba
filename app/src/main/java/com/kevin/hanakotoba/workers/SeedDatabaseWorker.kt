@@ -23,11 +23,11 @@ class SeedDatabaseWorker(
             if (filename != null) {
                 applicationContext.assets.open(filename).use { inputStream ->
                     JsonReader(inputStream.reader()).use { jsonReader ->
-                        val plantType = object : TypeToken<List<Flower>>() {}.type
-                        val plantList: List<Flower> = Gson().fromJson(jsonReader, plantType)
+                        val flowerType = object : TypeToken<List<Flower>>() {}.type
+                        val flowerList: List<Flower> = Gson().fromJson(jsonReader, flowerType)
 
                         val database = AppDatabase.getInstance(applicationContext)
-                        database.flowerDao().insertAll(plantList)
+                        database.flowerDao().insertAll(flowerList)
 
                         Result.success()
                     }
