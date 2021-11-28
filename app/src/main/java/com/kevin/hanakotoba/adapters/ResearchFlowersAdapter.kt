@@ -26,7 +26,7 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
         holder.binding.userFlowerName.text = currentItem.name
 
         holder.itemView.setOnClickListener {
-            val activity = holder.itemView.context as AppCompatActivity
+            //val activity = holder.itemView.context as AppCompatActivity
 
             //TODO: PASS FLOWER OBJECT INSTEAD OF THE NAME/ID ?
             /*val testFragment = FlowerDescription.newInstance(currentItem.name)

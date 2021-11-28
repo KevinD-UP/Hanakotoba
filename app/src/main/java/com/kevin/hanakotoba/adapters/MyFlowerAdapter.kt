@@ -35,7 +35,7 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
             Toast.makeText(holder.itemView.context, "[MyFlowerAdapter - onBindViewholder] Water : " + currentItem.name, Toast.LENGTH_SHORT).show()
         }
 
-        holder.itemView.setOnClickListener {
+        /*holder.itemView.setOnClickListener {
             /*  Toast.makeText(holder.itemView.context, currentItem.name, Toast.LENGTH_SHORT).show();*/
             val activity = holder.itemView.context as AppCompatActivity
 
@@ -45,8 +45,8 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
                 .addToBackStack(null).commit()
 */
 
-            fragment.show(activity.supportFragmentManager,"dialog")
-        }
+            fragment.show(activity,"dialog")
+        }*/
 
     }
 
