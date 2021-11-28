@@ -9,72 +9,72 @@
   },
   {
     "id": 2,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
+    "name": "Abutilon",
+    "latinName": "Abutilon x hybridum" ,
     "description": "Cerisier venant du Japon",
     "wateringInterval": 7,
     "imageUrl": ""
   },
   {
     "id": 3,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
+    "name": "Cactus de Noël",
+    "latinName": "Schlumbergera" ,
     "description": "Cerisier venant du Japon",
     "wateringInterval": 7,
     "imageUrl": ""
   },
   {
     "id": 4,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
+    "name": "Cosmos bipinnatus",
+    "latinName": "Cosmos bipinnatus" ,
     "description": "Cerisier venant du Japon",
     "wateringInterval": 7,
     "imageUrl": ""
   },
   {
     "id": 5,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
+    "name": "Géranium vivace sanguin",
+    "latinName": "Geranium sanguineum" ,
     "description": "Cerisier venant du Japon",
     "wateringInterval": 7,
     "imageUrl": ""
   },
   {
     "id": 6,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
+    "name": "Lys fauve",
+    "latinName": "Hemerocallis fulva" ,
     "description": "Cerisier venant du Japon",
     "wateringInterval": 7,
     "imageUrl": ""
   },
   {
     "id": 7,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
+    "name": "Anthémis",
+    "latinName": "Argyranthemum frutescens" ,
     "description": "Cerisier venant du Japon",
     "wateringInterval": 7,
     "imageUrl": ""
   },
   {
     "id": 8,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
+    "name": "Camomille",
+    "latinName": "Chamaemelum nobile" ,
     "description": "Cerisier venant du Japon",
     "wateringInterval": 7,
     "imageUrl": ""
   },
   {
     "id": 9,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
+    "name": "Gloxinia",
+    "latinName": "Gloxinia speciosa" ,
     "description": "Cerisier venant du Japon",
     "wateringInterval": 7,
     "imageUrl": ""
   },
   {
     "id": 10,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
+    "name": "Lotus",
+    "latinName": " Nelumbo nucifera" ,
     "description": "Cerisier venant du Japon",
     "wateringInterval": 7,
     "imageUrl": ""
