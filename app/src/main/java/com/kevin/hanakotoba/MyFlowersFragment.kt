@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentMyFlowersBinding
 import com.kevin.hanakotoba.adapters.MyFlowerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
 //TODO: Enable watering button only when it's time
+@AndroidEntryPoint
 class MyFlowersFragment : Fragment() {
 
     private lateinit var mFlowerViewModel : FlowerViewModel

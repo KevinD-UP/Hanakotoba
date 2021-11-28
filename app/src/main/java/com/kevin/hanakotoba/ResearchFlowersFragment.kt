@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kevin.hanakotoba.adapters.ResearchFlowersAdapter
 import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentResearchFlowersBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class ResearchFlowersFragment : Fragment() {
     private lateinit var binding : FragmentResearchFlowersBinding
 

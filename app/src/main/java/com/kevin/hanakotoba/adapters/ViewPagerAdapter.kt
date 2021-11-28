@@ -1,4 +1,4 @@
-package com.kevin.hanakotoba.fragments
+package com.kevin.hanakotoba.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

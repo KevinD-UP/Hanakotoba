@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.tabs.TabLayoutMediator
+import com.kevin.hanakotoba.adapters.ViewPagerAdapter
 import com.kevin.hanakotoba.databinding.FragmentGardenBinding
-import com.kevin.hanakotoba.fragments.ViewPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GardenFragment : Fragment() {
 
     private lateinit var binding : FragmentGardenBinding

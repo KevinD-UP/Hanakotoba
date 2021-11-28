@@ -3,7 +3,9 @@ package com.kevin.hanakotoba
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.kevin.hanakotoba.databinding.ActivityGardenBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GardenActivity : AppCompatActivity() {
 
     val binding : ActivityGardenBinding by lazy{ ActivityGardenBinding.inflate(layoutInflater) }

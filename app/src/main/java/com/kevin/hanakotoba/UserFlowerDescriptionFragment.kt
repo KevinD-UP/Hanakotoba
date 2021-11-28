@@ -9,9 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentUserFlowerDescriptionBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_PARAM1 = "param1"
 
+@AndroidEntryPoint
 class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding : FragmentUserFlowerDescriptionBinding
