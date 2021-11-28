@@ -8,16 +8,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class GardenActivity : AppCompatActivity() {
 
-    val binding : ActivityGardenBinding by lazy{ ActivityGardenBinding.inflate(layoutInflater) }
+    private val binding : ActivityGardenBinding by lazy{ ActivityGardenBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        // SETUP DATABASE WITH https://sqlitebrowser.org/dl/
-        // Export file as .db , copy into assets/database/
-
-
-
 
     }
 
