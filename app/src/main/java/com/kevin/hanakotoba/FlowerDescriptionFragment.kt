@@ -9,13 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kevin.hanakotoba.databinding.FragmentFlowerDescriptionBinding
+import com.kevin.hanakotoba.viewmodels.FlowerDescriptionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FlowerDescriptionFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding : FragmentFlowerDescriptionBinding
-
+    private lateinit var flowerDescriptionViewModel: FlowerDescriptionViewModel
     private var flowerName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
