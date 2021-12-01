@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.kevin.hanakotoba.viewmodels.FlowerViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kevin.hanakotoba.databinding.FragmentFlowerDescriptionBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FlowerDescriptionFragment : Fragment() {
+class FlowerDescriptionFragment : BottomSheetDialogFragment() {
 
-    private lateinit var mFlowerViewModel : FlowerViewModel
     private lateinit var binding : FragmentFlowerDescriptionBinding
 
     private var flowerName: String? = null
@@ -30,7 +29,6 @@ class FlowerDescriptionFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_flower_description,container,false)
 
-        mFlowerViewModel = ViewModelProvider(this).get(FlowerViewModel::class.java)
         binding = FragmentFlowerDescriptionBinding.bind(view)
 
 

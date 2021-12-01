@@ -4,10 +4,16 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.kevin.hanakotoba.FlowerDescriptionFragment
+import com.kevin.hanakotoba.UserFlowerDescriptionFragment
 
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayout2Binding
+import dagger.hilt.android.internal.managers.FragmentComponentManager
 
 class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>() {
 
@@ -18,7 +24,7 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val binding =ItemLayout2Binding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemLayout2Binding.inflate(LayoutInflater.from(parent.context),parent,false)
         return VH(binding)
     }
 
@@ -27,7 +33,11 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
         holder.binding.userFlowerName.text = currentItem.name
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context, currentItem.name, Toast.LENGTH_SHORT).show();
+            val activity =  FragmentComponentManager.findActivity(holder.itemView.context) as AppCompatActivity
+
+            val fragment : DialogFragment = FlowerDescriptionFragment()
+
+            fragment.show(activity.supportFragmentManager,"dialog")
         }
 
     }

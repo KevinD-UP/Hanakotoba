@@ -8,16 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentMyFlowersBinding
 import com.kevin.hanakotoba.adapters.MyFlowerAdapter
+import com.kevin.hanakotoba.data.Flower
+import com.kevin.hanakotoba.viewmodels.MyFlowerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 //TODO: Enable watering button only when it's time
 @AndroidEntryPoint
 class MyFlowersFragment : Fragment() {
 
-    private lateinit var mFlowerViewModel : FlowerViewModel
+    private lateinit var myFlowerViewModel : MyFlowerViewModel
 
     private lateinit var binding : FragmentMyFlowersBinding
 
@@ -27,15 +28,17 @@ class MyFlowersFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_my_flowers,container,false)
-        mFlowerViewModel = ViewModelProvider(this).get(FlowerViewModel::class.java)
+        myFlowerViewModel = ViewModelProvider(this).get(MyFlowerViewModel::class.java)
 
         binding = FragmentMyFlowersBinding.bind(view)
         val adapter = MyFlowerAdapter()
         binding.rvMyFlowers.adapter = adapter
         binding.rvMyFlowers.layoutManager = LinearLayoutManager(requireContext())
 
-        mFlowerViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
-            adapter.setFlower(flower)
+        myFlowerViewModel.flowerAndGarden.observe(viewLifecycleOwner, Observer { flowerAndGardens ->
+            val onlyFlower = mutableListOf<Flower>()
+            flowerAndGardens.map { flowerAndGarden -> onlyFlower.add(flowerAndGarden.flower) }
+            adapter.setFlower(onlyFlower)
         })
 
 

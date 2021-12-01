@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentUserFlowerDescriptionBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding : FragmentUserFlowerDescriptionBinding
-    private lateinit var mFlowerViewModel : FlowerViewModel
 
     private var flowerName: String? = null
 
@@ -30,7 +28,6 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         val view = inflater.inflate(R.layout.fragment_user_flower_description, container, false)
 
         binding= FragmentUserFlowerDescriptionBinding.bind(view)
-        mFlowerViewModel = ViewModelProvider(this).get(FlowerViewModel::class.java)
 
         binding.flowerNameTxt.text = flowerName
 

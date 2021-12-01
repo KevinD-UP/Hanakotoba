@@ -9,8 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kevin.hanakotoba.adapters.ResearchFlowersAdapter
-import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentResearchFlowersBinding
+import com.kevin.hanakotoba.viewmodels.ResearchFlowersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ResearchFlowersFragment : Fragment() {
     private lateinit var binding : FragmentResearchFlowersBinding
 
-    private lateinit var mFlowerViewModel : FlowerViewModel
+    private lateinit var researchViewModel : ResearchFlowersViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,8 +31,8 @@ class ResearchFlowersFragment : Fragment() {
         binding.rvResearchFlowers.adapter = adapter
         binding.rvResearchFlowers.layoutManager = LinearLayoutManager(requireContext())
 
-        mFlowerViewModel = ViewModelProvider(this).get(FlowerViewModel::class.java)
-        mFlowerViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
+        researchViewModel = ViewModelProvider(this).get(ResearchFlowersViewModel::class.java)
+        researchViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
             adapter.setFlower(flower)
         })
 
