@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
+import com.kevin.hanakotoba.R
 import com.kevin.hanakotoba.UserFlowerDescriptionFragment
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
@@ -35,18 +36,9 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
             Toast.makeText(holder.itemView.context, "[MyFlowerAdapter - onBindViewholder] Water : " + currentItem.name, Toast.LENGTH_SHORT).show()
         }
 
-        /*holder.itemView.setOnClickListener {
-            /*  Toast.makeText(holder.itemView.context, currentItem.name, Toast.LENGTH_SHORT).show();*/
-            val activity = holder.itemView.context as AppCompatActivity
-
-            val fragment : DialogFragment = UserFlowerDescriptionFragment.newInstance(currentItem.name)
-
-            /*  activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,fragment)
-                .addToBackStack(null).commit()
-*/
-
-            fragment.show(activity,"dialog")
-        }*/
+        holder.itemView.setOnClickListener {
+            Toast.makeText(holder.itemView.context, currentItem.name, Toast.LENGTH_SHORT).show();
+        }
 
     }
 

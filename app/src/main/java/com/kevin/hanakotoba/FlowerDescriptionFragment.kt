@@ -12,7 +12,7 @@ import com.kevin.hanakotoba.databinding.FragmentFlowerDescriptionBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FlowerDescription : Fragment() {
+class FlowerDescriptionFragment : Fragment() {
 
     private lateinit var mFlowerViewModel : FlowerViewModel
     private lateinit var binding : FragmentFlowerDescriptionBinding

@@ -3,8 +3,9 @@ package com.kevin.hanakotoba.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayout2Binding
 
@@ -26,13 +27,7 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
         holder.binding.userFlowerName.text = currentItem.name
 
         holder.itemView.setOnClickListener {
-            //val activity = holder.itemView.context as AppCompatActivity
-
-            //TODO: PASS FLOWER OBJECT INSTEAD OF THE NAME/ID ?
-            /*val testFragment = FlowerDescription.newInstance(currentItem.name)
-
-            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,testFragment)
-                .addToBackStack(null).commit()*/
+            Toast.makeText(holder.itemView.context, currentItem.name, Toast.LENGTH_SHORT).show();
         }
 
     }

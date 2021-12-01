@@ -51,15 +51,4 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
 
         return view
     }
-
-    //TODO: PASS FLOWER OBJECT INSTEAD OF THE NAME/ID ?
-    companion object {
-        @JvmStatic
-        fun newInstance(flowerName: String) =
-            UserFlowerDescriptionFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, flowerName)
-                }
-            }
-    }
 }
