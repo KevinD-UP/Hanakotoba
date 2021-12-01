@@ -11,6 +11,7 @@ import com.kevin.hanakotoba.R
 import com.kevin.hanakotoba.UserFlowerDescriptionFragment
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
+import java.util.*
 
 
 class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
@@ -32,8 +33,14 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
         holder.binding.userFlowerName.text = currentItem.name
 
 
-        holder.binding.waterButton.setOnClickListener{
-            Toast.makeText(holder.itemView.context, "[MyFlowerAdapter - onBindViewholder] Water : " + currentItem.name, Toast.LENGTH_SHORT).show()
+        if(currentItem.shouldBeWatered()) {
+            holder.binding.waterButton.setOnClickListener {
+                Toast.makeText(
+                    holder.itemView.context,
+                    "Watered : ${currentItem.name}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         holder.itemView.setOnClickListener {

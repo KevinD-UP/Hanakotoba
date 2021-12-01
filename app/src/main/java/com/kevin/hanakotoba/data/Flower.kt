@@ -14,15 +14,23 @@ data class Flower(
     val name: String,
     val latinName: String,
     val description: String,
+    var lastWateringDate: Calendar,
     val wateringInterval: Int = 7, //How often the plant should be watering in day.
     val imageUrl: String = ""
 ){
     /**
-     * Determines if the plant should be watered.  Returns true if [since]'s date > date of last
-     * watering + watering Interval; false otherwise.
+     * Determines if the plant should be watered.
      */
-    fun shouldBeWatered(since: Calendar, lastWateringDate: Calendar) =
-        since > lastWateringDate.apply { add(Calendar.DAY_OF_YEAR, wateringInterval) }
+    fun shouldBeWatered(): Boolean {
+        val limit = this.lastWateringDate
+        limit.add(Calendar.DATE, wateringInterval)
+        return limit >= Calendar.getInstance()
+    }
+
+    fun watered() {
+        lastWateringDate = Calendar.getInstance()
+    }
+
 
     override fun toString() = name
 }

@@ -11,8 +11,6 @@ import com.kevin.hanakotoba.viewmodels.FlowerViewModel
 import com.kevin.hanakotoba.databinding.FragmentUserFlowerDescriptionBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-private const val ARG_PARAM1 = "param1"
-
 @AndroidEntryPoint
 class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
 
@@ -23,9 +21,6 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            flowerName = it.getString(ARG_PARAM1)
-        }
     }
 
     override fun onCreateView(
