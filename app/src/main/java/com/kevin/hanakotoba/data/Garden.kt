@@ -4,9 +4,7 @@ import androidx.room.*
 import java.util.*
 
 /**
- * [Garden] represents when a user adds a [Flower] to their garden, with useful metadata.
- * Properties such as [lastWateringDate] are used for notifications (such as when to water the
- * plant).
+ * [Garden] represents when a user adds a [Flower] to their garden.
  *
  * Declaring the column info allows for the renaming of variables without implementing a
  * database migration, as the column name would not change.
@@ -21,18 +19,6 @@ import java.util.*
 data class Garden(
     @ColumnInfo(name = "flower_id") val flowerId: Int,
 
-    /**
-     * Indicates when the [Flower] was planted. Used for showing notification when it's time
-     * to harvest the plant.
-     */
-    @ColumnInfo(name = "flower_date") val flowerDate: Calendar = Calendar.getInstance(),
-
-    /**
-     * Indicates when the [Flower] was last watered. Used for showing notification when it's
-     * time to water the plant.
-     */
-    @ColumnInfo(name = "last_watering_date")
-    val lastWateringDate: Calendar = Calendar.getInstance()
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

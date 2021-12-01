@@ -14,7 +14,7 @@ data class Flower(
     val name: String,
     val latinName: String,
     val description: String,
-    var lastWateringDate: Calendar,
+    var lastWateringDate: Calendar = Calendar.getInstance(),
     val wateringInterval: Int = 7, //How often the plant should be watering in day.
     val imageUrl: String = ""
 ){
