@@ -11,6 +11,7 @@ import com.kevin.hanakotoba.R
 import com.kevin.hanakotoba.UserFlowerDescriptionFragment
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
+import dagger.hilt.android.internal.managers.FragmentComponentManager
 import java.util.*
 
 
@@ -44,7 +45,17 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
         }
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context, currentItem.name, Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(holder.itemView.context, currentItem.name, Toast.LENGTH_SHORT).show();*/
+
+            val activity =  FragmentComponentManager.findActivity(holder.itemView.context) as AppCompatActivity
+
+            val fragment : DialogFragment = UserFlowerDescriptionFragment()
+
+            /*  activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,fragment)
+                .addToBackStack(null).commit()
+*/
+
+            fragment.show(activity.supportFragmentManager,"dialog")
         }
 
     }
