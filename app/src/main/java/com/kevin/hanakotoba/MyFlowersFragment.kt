@@ -36,7 +36,6 @@ class MyFlowersFragment : Fragment() {
 
         mFlowerViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
             adapter.setFlower(flower)
-
         })
 
 

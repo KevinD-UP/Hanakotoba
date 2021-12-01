@@ -7,13 +7,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
-import com.kevin.hanakotoba.R
 import com.kevin.hanakotoba.UserFlowerDescriptionFragment
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
 import dagger.hilt.android.internal.managers.FragmentComponentManager
-import java.util.*
-
 
 class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
 
@@ -41,6 +38,7 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
                     "Watered : ${currentItem.name}",
                     Toast.LENGTH_SHORT
                 ).show()
+                currentItem.watered()
             }
         }
 

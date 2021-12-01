@@ -32,7 +32,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding= FragmentUserFlowerDescriptionBinding.bind(view)
         mFlowerViewModel = ViewModelProvider(this).get(FlowerViewModel::class.java)
 
-        binding.flowerNameTxt.text = "okmec"
+        binding.flowerNameTxt.text = flowerName
 
         binding.deleteFlowerBtn.setOnClickListener {
             Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Delete ", Toast.LENGTH_SHORT).show();

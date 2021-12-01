@@ -28,13 +28,12 @@ class ResearchFlowersFragment : Fragment() {
         binding = FragmentResearchFlowersBinding.bind(view)
 
         val adapter = ResearchFlowersAdapter()
-        binding.rvResearchFlowers .adapter = adapter
+        binding.rvResearchFlowers.adapter = adapter
         binding.rvResearchFlowers.layoutManager = LinearLayoutManager(requireContext())
 
         mFlowerViewModel = ViewModelProvider(this).get(FlowerViewModel::class.java)
         mFlowerViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
             adapter.setFlower(flower)
-
         })
 
         return view
