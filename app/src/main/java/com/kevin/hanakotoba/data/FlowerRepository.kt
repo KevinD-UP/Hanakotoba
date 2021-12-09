@@ -1,4 +1,5 @@
 package com.kevin.hanakotoba.data
+
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,6 +14,10 @@ class FlowerRepository @Inject constructor(private val flowerDao: FlowerDao) {
 
     fun getFlowers() = flowerDao.getFlowers()
 
-    fun getFlower(plantId: String) = flowerDao.getFlower(plantId)
+    fun getFlower(flowerId: Int) = flowerDao.getFlower(flowerId)
+
+    fun updateFlower(flower: Flower) = flowerDao.updateFlower(flower)
+
+    fun deleteFlower(flower: Flower) = flowerDao.deleteFlower(flower)
 
 }

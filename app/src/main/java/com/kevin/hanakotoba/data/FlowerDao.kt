@@ -1,9 +1,6 @@
 package com.kevin.hanakotoba.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -15,8 +12,14 @@ interface FlowerDao {
     fun getFlowers(): Flow<List<Flower>>
 
     @Query("SELECT * FROM flower WHERE id = :flowerId")
-    fun getFlower(flowerId: String): Flow<Flower>
+    fun getFlower(flowerId: Int): Flow<Flower>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(flowers: List<Flower>)
+    fun insertAll(flowers: List<Flower>)
+
+    @Update
+    fun updateFlower(flower: Flower)
+
+    @Delete
+    fun deleteFlower(flower: Flower)
 }

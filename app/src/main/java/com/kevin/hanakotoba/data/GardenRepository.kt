@@ -8,17 +8,18 @@ class GardenRepository @Inject constructor(
     private val gardenPlantingDao: GardenDao
 ) {
 
-    suspend fun createGardenPlanting(plantId: Int) {
-        val gardenPlanting = Garden(plantId)
-        gardenPlantingDao.insertGarden(gardenPlanting)
-    }
-
-    suspend fun removeGarden(gardenPlanting: Garden) {
-        gardenPlantingDao.deleteGarden(gardenPlanting)
-    }
-
-    fun isPlanted(plantId: String) =
+    fun isPlanted(plantId: Int) =
         gardenPlantingDao.isPlanted(plantId)
 
     fun getPlantedGardens() = gardenPlantingDao.getPlantedGardens()
+
+    fun insertFlowerInGarden(flowerId: Int) {
+        val garden = Garden(flowerId)
+        gardenPlantingDao.insertFlowerInGarden(garden)
+    }
+
+    fun deleteFlowerInGarden(flowerId: Int) {
+        val garden = Garden(flowerId)
+        gardenPlantingDao.deleteFlowerInGarden(garden)
+    }
 }

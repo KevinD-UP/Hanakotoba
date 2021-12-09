@@ -12,7 +12,7 @@ interface GardenDao {
     fun getGardens(): Flow<List<Garden>>
 
     @Query("SELECT EXISTS(SELECT 1 FROM garden WHERE flower_id = :plantId LIMIT 1)")
-    fun isPlanted(plantId: String): Flow<Boolean>
+    fun isPlanted(plantId: Int): Flow<Boolean>
 
     /**
      * This query will tell Room to query both the [Flower] and [Garden] tables and handle
@@ -23,8 +23,9 @@ interface GardenDao {
     fun getPlantedGardens(): Flow<List<FlowerAndGarden>>
 
     @Insert
-    suspend fun insertGarden(gardenPlanting: Garden): Long
+    fun insertFlowerInGarden(gardenPlanting: Garden): Long
 
     @Delete
-    suspend fun deleteGarden(gardenPlanting: Garden)
+    fun deleteFlowerInGarden(gardenPlanting: Garden)
+
 }

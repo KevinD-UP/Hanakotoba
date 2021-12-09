@@ -9,8 +9,12 @@ import com.kevin.hanakotoba.data.GardenRepository
 import javax.inject.Inject
 
 class FlowerDescriptionViewModel @Inject internal constructor(
-    flowerRepository: FlowerRepository,
-    gardenRepository: GardenRepository
+    private val gardenRepository: GardenRepository
 ) : ViewModel() {
 
+        fun addFlowerInGarden(flowerId: Int): Unit =
+         gardenRepository.insertFlowerInGarden(flowerId)
+
+        fun deleteFlowerInGarden(flowerId: Int): Unit =
+         gardenRepository.deleteFlowerInGarden(flowerId)
 }

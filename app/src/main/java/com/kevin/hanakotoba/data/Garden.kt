@@ -18,7 +18,6 @@ import java.util.*
 )
 data class Garden(
     @ColumnInfo(name = "flower_id") val flowerId: Int,
-
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

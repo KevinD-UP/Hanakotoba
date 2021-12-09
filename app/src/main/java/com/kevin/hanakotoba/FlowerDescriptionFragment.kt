@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.FragmentFlowerDescriptionBinding
 import com.kevin.hanakotoba.viewmodels.FlowerDescriptionViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +18,7 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding : FragmentFlowerDescriptionBinding
     private lateinit var flowerDescriptionViewModel: FlowerDescriptionViewModel
-    private var flowerName: String? = null
+    private lateinit var flower: Flower
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +34,10 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding = FragmentFlowerDescriptionBinding.bind(view)
 
 
-        binding.flowerNameTxt.text = flowerName
+        binding.flowerNameTxt.text = flower.name
         binding.addFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "[FlowerDescription - onCreateView] ADD : $flowerName", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "[FlowerDescription - onCreateView] ADD : ${flower.name}", Toast.LENGTH_SHORT).show()
+            flowerDescriptionViewModel.addFlowerInGarden(flower.flower_id)
         }
 
         return view
