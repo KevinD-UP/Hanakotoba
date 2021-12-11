@@ -3,6 +3,7 @@ package com.kevin.hanakotoba.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 import java.util.*
 
 
@@ -17,7 +18,7 @@ data class Flower(
     var lastWateringDate: Calendar = Calendar.getInstance(),
     val wateringInterval: Int = 7, //How often the plant should be watering in day.
     val imageUrl: String = ""
-){
+) : Serializable {
     /**
      * Determines if the plant should be watered.
      */

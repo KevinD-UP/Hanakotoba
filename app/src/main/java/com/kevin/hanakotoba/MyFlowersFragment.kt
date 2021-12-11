@@ -28,6 +28,7 @@ class MyFlowersFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_my_flowers,container,false)
+
         myFlowerViewModel = ViewModelProvider(this).get(MyFlowerViewModel::class.java)
 
         binding = FragmentMyFlowersBinding.bind(view)

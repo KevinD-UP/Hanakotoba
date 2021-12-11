@@ -11,6 +11,7 @@ import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.FragmentUserFlowerDescriptionBinding
 import com.kevin.hanakotoba.viewmodels.FlowerDescriptionViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.concurrent.thread
 
 @AndroidEntryPoint
 class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
@@ -29,13 +30,17 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_user_flower_description, container, false)
 
-        binding= FragmentUserFlowerDescriptionBinding.bind(view)
+        binding = FragmentUserFlowerDescriptionBinding.bind(view)
+        val bundle = arguments
+        flower = bundle!!.getSerializable("flower") as Flower
+
+        flowerDescriptionViewModel = ViewModelProvider(this).get(FlowerDescriptionViewModel::class.java)
 
         binding.flowerNameTxt.text = flower.name
 
         binding.deleteFlowerBtn.setOnClickListener {
             Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Delete ", Toast.LENGTH_SHORT).show();
-            flowerDescriptionViewModel.deleteFlowerInGarden(flower.flower_id)
+            thread { flowerDescriptionViewModel.deleteFlowerInGarden(flower.flower_id) }.start()
         }
 
         binding.waterFlowerBtn.setOnClickListener {

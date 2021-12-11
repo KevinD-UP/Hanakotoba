@@ -1,6 +1,7 @@
 package com.kevin.hanakotoba.adapters
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -36,6 +37,9 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
             val activity =  FragmentComponentManager.findActivity(holder.itemView.context) as AppCompatActivity
 
             val fragment : DialogFragment = FlowerDescriptionFragment()
+            val bundle = Bundle()
+            bundle.putSerializable("flower", currentItem);
+            fragment.arguments = bundle
 
             fragment.show(activity.supportFragmentManager,"dialog")
         }

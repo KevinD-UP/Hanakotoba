@@ -11,7 +11,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.FragmentFlowerDescriptionBinding
 import com.kevin.hanakotoba.viewmodels.FlowerDescriptionViewModel
+import com.kevin.hanakotoba.viewmodels.MyFlowerViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.concurrent.thread
 
 @AndroidEntryPoint
 class FlowerDescriptionFragment : BottomSheetDialogFragment() {
@@ -22,6 +24,7 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -31,13 +34,19 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_flower_description,container,false)
 
+        val bundle = arguments
+        flower = bundle!!.getSerializable("flower") as Flower
+
+        flowerDescriptionViewModel = ViewModelProvider(this).get(FlowerDescriptionViewModel::class.java)
         binding = FragmentFlowerDescriptionBinding.bind(view)
 
 
         binding.flowerNameTxt.text = flower.name
         binding.addFlowerBtn.setOnClickListener {
             Toast.makeText(context, "[FlowerDescription - onCreateView] ADD : ${flower.name}", Toast.LENGTH_SHORT).show()
-            flowerDescriptionViewModel.addFlowerInGarden(flower.flower_id)
+            thread {
+                flowerDescriptionViewModel.addFlowerInGarden(flower.flower_id)
+            }.start()
         }
 
         return view
