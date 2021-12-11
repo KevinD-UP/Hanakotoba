@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.kevin.hanakotoba.UserFlowerDescriptionFragment
+import com.kevin.hanakotoba.data.AppDatabase
 import com.kevin.hanakotoba.data.Flower
+import com.kevin.hanakotoba.data.Garden
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
 import dagger.hilt.android.internal.managers.FragmentComponentManager
 
@@ -34,12 +36,15 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
 
         if(currentItem.shouldBeWatered()) {
             holder.binding.waterButton.setOnClickListener {
+                val db = AppDatabase.getInstance(holder.binding.waterButton.context)
                 Toast.makeText(
                     holder.itemView.context,
                     "Watered : ${currentItem.name}",
                     Toast.LENGTH_SHORT
                 ).show()
                 currentItem.watered()
+                //TODO: check Coroutine
+                db.gardenFloweringDao().updateFlowerInGarden(Garden(currentItem.flower_id))
             }
         }
 
