@@ -23,9 +23,12 @@ interface GardenDao {
     fun getPlantedGardens(): Flow<List<FlowerAndGarden>>
 
     @Insert
-    fun insertFlowerInGarden(gardenPlanting: Garden): Long
+    fun insertFlowerInGarden(garden: Garden): Long
 
     @Delete
-    fun deleteFlowerInGarden(gardenPlanting: Garden)
+    fun deleteFlowerInGarden(garden: Garden)
+
+    @Update
+    fun updateFlowerInGarden(garden: Garden)
 
 }

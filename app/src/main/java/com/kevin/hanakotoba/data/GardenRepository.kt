@@ -22,4 +22,9 @@ class GardenRepository @Inject constructor(
         val garden = Garden(flowerId)
         gardenPlantingDao.deleteFlowerInGarden(garden)
     }
+
+    fun updateFlowerInGarden(flowerId: Int){
+        val garden = Garden(flowerId)
+        gardenPlantingDao.updateFlowerInGarden(garden)
+    }
 }

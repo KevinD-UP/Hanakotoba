@@ -19,4 +19,7 @@ class FlowerDescriptionViewModel @Inject internal constructor(
 
         fun deleteFlowerInGarden(flowerId: Int): Unit =
          gardenRepository.deleteFlowerInGarden(flowerId)
+
+        fun updateFlowerInGarden(flowerId: Int): Unit =
+            gardenRepository.updateFlowerInGarden(flowerId)
 }
