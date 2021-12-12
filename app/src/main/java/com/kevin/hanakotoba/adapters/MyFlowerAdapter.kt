@@ -54,7 +54,7 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
             currentItem.watered()
             runBlocking { // this: CoroutineScope
                 launch { // launch a new coroutine and continue
-                    db.flowerDao().updateFlower(currentItem)
+                    db.flowerDao().wateredFlower(currentItem.flower_id)
                 }
             }
         }

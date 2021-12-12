@@ -20,6 +20,9 @@ interface FlowerDao {
     @Update
     suspend fun updateFlower(flower: Flower)
 
+    @Query("UPDATE flower SET lastWateringDate=datetime('now') WHERE id = :flowerId")
+    suspend fun wateredFlower(flowerId: Int)
+
     @Delete
     suspend fun deleteFlower(flower: Flower)
 }
