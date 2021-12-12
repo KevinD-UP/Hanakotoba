@@ -52,7 +52,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding.waterFlowerBtn.setOnClickListener {
             Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Water : ", Toast.LENGTH_SHORT).show();
             flower.watered()
-            flowerDescriptionViewModel.updateFlowerInGarden(flower)
+            flowerDescriptionViewModel.updateFlowerInGarden(flower.flower_id)
         }
 
         return view
