@@ -40,13 +40,13 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
 
         binding.deleteFlowerBtn.setOnClickListener {
             Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Delete ", Toast.LENGTH_SHORT).show();
-            //TODO: check coroutine
             flowerDescriptionViewModel.deleteFlowerInGarden(flower.flower_id)
         }
 
         binding.waterFlowerBtn.setOnClickListener {
             Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Water : ", Toast.LENGTH_SHORT).show();
             flower.watered()
+            flowerDescriptionViewModel.updateFlowerInGarden(flower.flower_id)
         }
 
         return view

@@ -44,7 +44,6 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding.flowerNameTxt.text = flower.name
         binding.addFlowerBtn.setOnClickListener {
             Toast.makeText(context, "[FlowerDescription - onCreateView] ADD : ${flower.name}", Toast.LENGTH_SHORT).show()
-            //TODO: check coroutine
             flowerDescriptionViewModel.addFlowerInGarden(flower.flower_id)
         }
 

@@ -16,8 +16,8 @@ class FlowerRepository @Inject constructor(private val flowerDao: FlowerDao) {
 
     fun getFlower(flowerId: Int) = flowerDao.getFlower(flowerId)
 
-    fun updateFlower(flower: Flower) = flowerDao.updateFlower(flower)
+    suspend fun updateFlower(flower: Flower) = flowerDao.updateFlower(flower)
 
-    fun deleteFlower(flower: Flower) = flowerDao.deleteFlower(flower)
+    suspend fun deleteFlower(flower: Flower) = flowerDao.deleteFlower(flower)
 
 }

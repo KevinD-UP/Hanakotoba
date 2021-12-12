@@ -18,8 +18,8 @@ interface FlowerDao {
     fun insertAll(flowers: List<Flower>)
 
     @Update
-    fun updateFlower(flower: Flower)
+    suspend fun updateFlower(flower: Flower)
 
     @Delete
-    fun deleteFlower(flower: Flower)
+    suspend fun deleteFlower(flower: Flower)
 }

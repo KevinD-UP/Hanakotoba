@@ -43,8 +43,7 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
                     Toast.LENGTH_SHORT
                 ).show()
                 currentItem.watered()
-                //TODO: check Coroutine
-                db.gardenFloweringDao().updateFlowerInGarden(Garden(currentItem.flower_id))
+                //db.gardenFloweringDao().updateFlowerInGarden(Garden(currentItem.flower_id))
             }
         }
 
