@@ -19,6 +19,7 @@ data class Flower(
     val wateringInterval: Int = 7, //How often the plant should be watering in day.
     val imageUrl: String = ""
 ) : Serializable {
+
     /**
      * Determines if the plant should be watered.
      */

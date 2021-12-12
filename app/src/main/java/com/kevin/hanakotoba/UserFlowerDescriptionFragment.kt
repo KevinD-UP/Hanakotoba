@@ -43,10 +43,16 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
             flowerDescriptionViewModel.deleteFlowerInGarden(flower.flower_id)
         }
 
+        if(flower.shouldBeWatered()) {
+            binding.waterFlowerBtn.visibility = View.VISIBLE
+        } else {
+            binding.waterFlowerBtn.visibility = View.GONE
+        }
+
         binding.waterFlowerBtn.setOnClickListener {
             Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Water : ", Toast.LENGTH_SHORT).show();
             flower.watered()
-            flowerDescriptionViewModel.updateFlowerInGarden(flower.flower_id)
+            flowerDescriptionViewModel.updateFlowerInGarden(flower)
         }
 
         return view

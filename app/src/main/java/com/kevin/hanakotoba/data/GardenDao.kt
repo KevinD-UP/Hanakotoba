@@ -25,8 +25,8 @@ interface GardenDao {
     @Insert
     suspend fun insertFlowerInGarden(garden: Garden): Long
 
-    @Delete
-    suspend fun deleteFlowerInGarden(garden: Garden)
+    @Query("DELETE FROM garden WHERE flower_id = :flowerId")
+    suspend fun deleteFlowerInGarden(flowerId: Int)
 
     @Update
     suspend fun updateFlowerInGarden(garden: Garden)

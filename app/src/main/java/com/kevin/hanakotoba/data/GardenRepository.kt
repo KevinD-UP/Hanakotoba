@@ -19,8 +19,7 @@ class GardenRepository @Inject constructor(
     }
 
     suspend fun deleteFlowerInGarden(flowerId: Int) {
-        val garden = Garden(flowerId)
-        gardenPlantingDao.deleteFlowerInGarden(garden)
+        gardenPlantingDao.deleteFlowerInGarden(flowerId)
     }
 
     suspend fun updateFlowerInGarden(flowerId: Int){
