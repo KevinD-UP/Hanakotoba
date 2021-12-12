@@ -3,6 +3,7 @@ package com.kevin.hanakotoba.adapters
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,9 @@ import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.data.Garden
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
 import dagger.hilt.android.internal.managers.FragmentComponentManager
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.concurrent.thread
 
 class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
 
@@ -35,15 +39,23 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
 
 
         if(currentItem.shouldBeWatered()) {
-            holder.binding.waterButton.setOnClickListener {
-                val db = AppDatabase.getInstance(holder.binding.waterButton.context)
-                Toast.makeText(
-                    holder.itemView.context,
-                    "Watered : ${currentItem.name}",
-                    Toast.LENGTH_SHORT
-                ).show()
-                currentItem.watered()
-                //db.gardenFloweringDao().updateFlowerInGarden(Garden(currentItem.flower_id))
+            holder.binding.waterButton.visibility = View.VISIBLE
+        } else {
+            holder.binding.waterButton.visibility = View.GONE
+        }
+
+        holder.binding.waterButton.setOnClickListener {
+            val db = AppDatabase.getInstance(holder.binding.waterButton.context)
+            Toast.makeText(
+                holder.itemView.context,
+                "Watered : ${currentItem.name}",
+                Toast.LENGTH_SHORT
+            ).show()
+            currentItem.watered()
+            runBlocking { // this: CoroutineScope
+                launch { // launch a new coroutine and continue
+                    db.flowerDao().updateFlower(currentItem)
+                }
             }
         }
 
