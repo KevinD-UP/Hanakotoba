@@ -14,6 +14,7 @@ import com.kevin.hanakotoba.data.AppDatabase
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.data.Garden
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
+import com.kevin.hanakotoba.dependencyInjection.DatabaseModule
 import dagger.hilt.android.internal.managers.FragmentComponentManager
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -22,6 +23,7 @@ import kotlin.concurrent.thread
 class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
 
     private var flowerList = emptyList<Flower>()
+    private val databaseModule = DatabaseModule()
 
     inner class VH (val binding : ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root){
 
@@ -45,7 +47,7 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
         }
 
         holder.binding.waterButton.setOnClickListener {
-            val db = AppDatabase.getInstance(holder.binding.waterButton.context)
+
             Toast.makeText(
                 holder.itemView.context,
                 "Watered : ${currentItem.name}",
@@ -54,7 +56,12 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
             currentItem.watered()
             runBlocking { // this: CoroutineScope
                 launch { // launch a new coroutine and continue
-                    db.flowerDao().wateredFlower(currentItem.flower_id)
+                    databaseModule
+                            .providePlantDao(
+                                    databaseModule
+                                            .provideAppDatabase(holder.binding.waterButton.context)
+                            )
+                            .wateredFlower(currentItem.flower_id)
                 }
             }
         }

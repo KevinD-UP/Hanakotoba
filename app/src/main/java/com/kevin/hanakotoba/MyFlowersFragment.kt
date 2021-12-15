@@ -14,7 +14,6 @@ import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.viewmodels.MyFlowerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-//TODO: Enable watering button only when it's time
 @AndroidEntryPoint
 class MyFlowersFragment : Fragment() {
 
@@ -32,7 +31,9 @@ class MyFlowersFragment : Fragment() {
         myFlowerViewModel = ViewModelProvider(this).get(MyFlowerViewModel::class.java)
 
         binding = FragmentMyFlowersBinding.bind(view)
+
         val adapter = MyFlowerAdapter()
+
         binding.rvMyFlowers.adapter = adapter
         binding.rvMyFlowers.layoutManager = LinearLayoutManager(requireContext())
 

@@ -14,6 +14,4 @@ class MyFlowerViewModel @Inject internal constructor(
 ) : ViewModel() {
     val flowerAndGarden: LiveData<List<FlowerAndGarden>> =
         gardenRepository.getPlantedGardens().asLiveData()
-
-
 }
