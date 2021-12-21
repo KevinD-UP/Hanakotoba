@@ -17,6 +17,9 @@ interface FlowerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(flowers: List<Flower>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(flowers: Flower)
+
     @Update
     suspend fun updateFlower(flower: Flower)
 

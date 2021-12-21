@@ -37,10 +37,10 @@ class ResearchFlowersFragment : Fragment() {
         })
 
         binding.addFlower.setOnClickListener{
-            val testFragment = ResearchFlowersFragment()
+            val addNewFlowerFragment = AddNewFlower()
             val activity = requireActivity()
 
-            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, testFragment)
+            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, addNewFlowerFragment)
                 .addToBackStack(null).commit()
         }
 
