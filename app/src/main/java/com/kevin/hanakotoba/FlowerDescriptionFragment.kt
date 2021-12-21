@@ -47,6 +47,11 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
             flowerDescriptionViewModel.addFlowerInGarden(flower.flower_id)
         }
 
+        binding.deleteFlowerBtn.setOnClickListener {
+            Toast.makeText(context, "[FlowerDescription - onCreateView] Delete : ${flower.name}", Toast.LENGTH_SHORT).show()
+            flowerDescriptionViewModel.deleteFlower(flower)
+        }
+
         return view
     }
 }

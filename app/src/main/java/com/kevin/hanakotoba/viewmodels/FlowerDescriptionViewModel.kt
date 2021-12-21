@@ -33,6 +33,12 @@ class FlowerDescriptionViewModel @Inject internal constructor(
             }
         }
 
+        fun deleteFlower(flower: Flower){
+            viewModelScope.launch {
+                flowerRepository.deleteFlower(flower)
+            }
+        }
+
         fun isPlanted(flowerId: Int): Flow<Boolean> {
             return gardenRepository.isPlanted(flowerId)
         }

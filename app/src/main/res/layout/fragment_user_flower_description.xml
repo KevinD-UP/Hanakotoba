@@ -69,22 +69,30 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1" />
+
         <Button
             android:id="@+id/deleteFlowerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete"
             android:layout_gravity="right"
             android:layout_marginEnd="10dp"
-            />
+            android:text="Delete" />
 
         <Button
             android:id="@+id/waterFlowerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="10dp"
+            android:text="Water" />
+
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="right
 "
-            android:text="WATER" />
+            android:text="Update" />
     </LinearLayout>
 
 

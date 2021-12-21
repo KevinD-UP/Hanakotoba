@@ -36,6 +36,14 @@ class ResearchFlowersFragment : Fragment() {
             adapter.setFlower(flower)
         })
 
+        binding.addFlower.setOnClickListener{
+            val testFragment = ResearchFlowersFragment()
+            val activity = requireActivity()
+
+            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, testFragment)
+                .addToBackStack(null).commit()
+        }
+
         return view
     }
 
