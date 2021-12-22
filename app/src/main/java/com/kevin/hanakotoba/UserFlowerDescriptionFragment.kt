@@ -55,6 +55,14 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
             flowerDescriptionViewModel.updateFlowerInGarden(flower.flower_id)
         }
 
+        binding.updateBtn.setOnClickListener {
+            val updateFlowerFragment = UpdateFlower()
+            val activity = requireActivity()
+
+            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, updateFlowerFragment)
+                .addToBackStack(null).commit()
+        }
+
         return view
     }
 }

@@ -1,5 +1,6 @@
 package com.kevin.hanakotoba
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.kevin.hanakotoba.databinding.ActivityGardenBinding
@@ -13,6 +14,10 @@ class GardenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }
