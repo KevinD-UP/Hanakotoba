@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Cerisier Japonais",
     "latinName": "Prunus serrulata" ,
-    "description": "Cerisier venant du Japon",
+    "description": "Cerisier venant du Japon.",
     "wateringInterval": 7,
     "imageUrl": ""
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "name": "Abutilon",
     "latinName": "Abutilon x hybridum" ,
-    "description": "Cerisier venant du Japon",
+    "description": "Les abutilons sont des arbustes à fleurs dont la hauteur peut aller jusqu'à 3 mètres pour certaines espèces.",
     "wateringInterval": 7,
     "imageUrl": ""
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "name": "Cactus de Noël",
     "latinName": "Schlumbergera" ,
-    "description": "Cerisier venant du Japon",
+    "description": "Ce sont des plantes épiphytes ou lithophytes de la zone néotropicale du Brésil.",
     "wateringInterval": 7,
     "imageUrl": ""
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "name": "Cosmos bipinnatus",
     "latinName": "Cosmos bipinnatus" ,
-    "description": "Cerisier venant du Japon",
+    "description": "Le Cosmos bipinnatus, en langage courant, cosmos bipenné peut atteindre une grande taille, parfois supérieure à 1 m 50, mais les variétés actuelles sont plus compactes et généralement inférieure au mètre.",
     "wateringInterval": 7,
     "imageUrl": ""
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "name": "Géranium vivace sanguin",
     "latinName": "Geranium sanguineum" ,
-    "description": "Cerisier venant du Japon",
+    "description": "Plante, non parfumée, hauteur à maturité 20 cm, largeur à maturité 40 cm, couleur de floraison rose, saison de floraison été, couleur du feuillage vert moyen, type de feuillage caduc...",
     "wateringInterval": 7,
     "imageUrl": ""
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "name": "Lys fauve",
     "latinName": "Hemerocallis fulva" ,
-    "description": "Cerisier venant du Japon",
+    "description": "Plante à fleurs rustique et légume vivace, avec de superbes fleurs orange.",
     "wateringInterval": 7,
     "imageUrl": ""
   },
@@ -59,7 +59,7 @@
     "id": 8,
     "name": "Camomille",
     "latinName": "Chamaemelum nobile" ,
-    "description": "Cerisier venant du Japon",
+    "description": "Merveilleuse vivace aux fleurs de pâquerette, offre une floraison du printemps à l’automne de toute beauté.",
     "wateringInterval": 7,
     "imageUrl": ""
   },
@@ -75,63 +75,7 @@
     "id": 10,
     "name": "Lotus",
     "latinName": " Nelumbo nucifera" ,
-    "description": "Cerisier venant du Japon",
-    "wateringInterval": 7,
-    "imageUrl": ""
-  },
-  {
-    "id": 11,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
-    "description": "Cerisier venant du Japon",
-    "wateringInterval": 7,
-    "imageUrl": ""
-  },
-  {
-    "id": 12,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
-    "description": "Cerisier venant du Japon",
-    "wateringInterval": 7,
-    "imageUrl": ""
-  },
-  {
-    "id": 13,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
-    "description": "Cerisier venant du Japon",
-    "wateringInterval": 7,
-    "imageUrl": ""
-  },
-  {
-    "id": 14,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
-    "description": "Cerisier venant du Japon",
-    "wateringInterval": 7,
-    "imageUrl": ""
-  },
-  {
-    "id": 15,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
-    "description": "Cerisier venant du Japon",
-    "wateringInterval": 7,
-    "imageUrl": ""
-  },
-  {
-    "id": 16,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
-    "description": "Cerisier venant du Japon",
-    "wateringInterval": 7,
-    "imageUrl": ""
-  },
-  {
-    "id": 17,
-    "name": "Cerisier Japonais",
-    "latinName": "Prunus serrulata" ,
-    "description": "Cerisier venant du Japon",
+    "description": "Le lotus sacré est une plante aquatique, vivace grâce à sa tige en rhizome spongieux, épais, ramifié, portant des tubercules fixés dans le fond de l'étang.",
     "wateringInterval": 7,
     "imageUrl": ""
   }
