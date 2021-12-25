@@ -98,12 +98,20 @@
     </TableLayout>
 
     <Button
+        android:id="@+id/addFlowerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Add Flower"
         android:layout_marginEnd="10px"
-        android:id="@+id/addFlowerBtn"/>
+        android:text="Add Flower" />
+
+    <Button
+        android:id="@+id/takePictureBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginEnd="10px"
+        android:text="Take Picture" />
 
     <Button
         android:layout_width="wrap_content"

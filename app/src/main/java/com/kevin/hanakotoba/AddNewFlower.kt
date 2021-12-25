@@ -1,29 +1,43 @@
 package com.kevin.hanakotoba
 
-import android.app.Activity
-import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.provider.MediaStore
+import android.os.Environment
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.AddNewFlowerFragmentBinding
 
 import com.kevin.hanakotoba.viewmodels.AddNewFlowerViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.lang.Exception
+import java.io.File
 
 @AndroidEntryPoint
 class AddNewFlower : Fragment() {
 
     private lateinit var binding : AddNewFlowerFragmentBinding
     private lateinit var viewModel: AddNewFlowerViewModel
+    private lateinit var imageFlower: String
 
-    val REQUEST_IMAGE_CAPTURE = 12345
+    private val selectPictureLauncher = registerForActivityResult(ActivityResultContracts.GetContent()){
+        binding.imageView.setImageURI(it)
+        imageFlower = it.path.toString()
+    }
+
+    private var tempImageUri: Uri? = null
+    private var tempImageFilePath = ""
+    private val cameraLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()){ success ->
+        if(success){
+            binding.imageView.setImageURI(tempImageUri)
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +47,8 @@ class AddNewFlower : Fragment() {
         val view = inflater.inflate(R.layout.add_new_flower_fragment, container, false)
         binding = AddNewFlowerFragmentBinding.bind(view)
 
+        imageFlower = ""
+
         viewModel = ViewModelProvider(this).get(AddNewFlowerViewModel::class.java)
 
         binding.addFlowerBtn.setOnClickListener {
@@ -41,28 +57,29 @@ class AddNewFlower : Fragment() {
             val latinName = binding.latinName.text.toString()
             val description = binding.description.text.toString()
             val wateringInterval = binding.wateringInterval.text.toString().toInt()
+            val imageFlower = this.imageFlower
 
-            val flowerToAdd = Flower(name = name, latinName = latinName, description = description, wateringInterval = wateringInterval)
+            val flowerToAdd = Flower(name = name, latinName = latinName, description = description, wateringInterval = wateringInterval, imageUrl = imageFlower)
             viewModel.addFlower(flowerToAdd)
         }
 
-        binding.name.setOnClickListener {
-            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            try {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            } catch (e: Exception) {
-                Toast.makeText(context, "Unable To Open Camera", Toast.LENGTH_SHORT).show()
-            }
+        binding.takePictureBtn.setOnClickListener {
+            tempImageUri = FileProvider.getUriForFile(this.requireContext(), "com.kevin.hanakotoba.provider", createImageFile().also {
+                tempImageFilePath = it.absolutePath
+            })
 
+            cameraLauncher.launch(tempImageUri)
         }
+
+        binding.choosePictureBtn.setOnClickListener {
+            selectPictureLauncher.launch("image/*")
+        }
+
         return view
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode === Activity.RESULT_OK) {
-            if (requestCode === REQUEST_IMAGE_CAPTURE) {
-            }
-        }
+    private fun createImageFile(): File {
+        val storageDir = this.requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile("temp_image", ".jpg", storageDir)
     }
 }

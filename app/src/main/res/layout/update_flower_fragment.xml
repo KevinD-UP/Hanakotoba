@@ -101,9 +101,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Add Flower"
+        android:text="Update Flower"
         android:layout_marginEnd="10px"
-        android:id="@+id/addFlowerBtn"/>
+        android:id="@+id/updateFlowerBtn"/>
 
     <Button
         android:layout_width="wrap_content"

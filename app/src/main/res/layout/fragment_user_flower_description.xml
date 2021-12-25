@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:text="HANA LA BELLE FLEUR"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"/>
