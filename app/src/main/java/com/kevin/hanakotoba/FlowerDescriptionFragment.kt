@@ -56,6 +56,10 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
             val updateFlowerFragment = UpdateFlower()
             val activity = requireActivity()
 
+            val newBundle = Bundle()
+            newBundle.putSerializable("flower", flower);
+            updateFlowerFragment.arguments = newBundle
+
             activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, updateFlowerFragment)
                 .addToBackStack(null).commit()
         }

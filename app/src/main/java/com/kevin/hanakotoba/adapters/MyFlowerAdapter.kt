@@ -1,6 +1,7 @@
 package com.kevin.hanakotoba.adapters
 
 import android.annotation.SuppressLint
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import com.kevin.hanakotoba.dependencyInjection.DatabaseModule
 import dagger.hilt.android.internal.managers.FragmentComponentManager
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.io.File
 import kotlin.concurrent.thread
 
 class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
@@ -38,6 +40,12 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
     override fun onBindViewHolder(holder: VH, position: Int) {
         val currentItem = flowerList[position]
         holder.binding.userFlowerName.text = currentItem.name
+
+        val imgFile = File(currentItem.imageUrl)
+        if (imgFile.exists()) {
+            val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
+            holder.binding.imageView.setImageBitmap(myBitmap)
+        }
 
 
         if(currentItem.shouldBeWatered()) {

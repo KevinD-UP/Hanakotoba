@@ -17,6 +17,14 @@ import com.kevin.hanakotoba.databinding.AddNewFlowerFragmentBinding
 import com.kevin.hanakotoba.viewmodels.AddNewFlowerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
+import android.graphics.Bitmap
+
+import android.graphics.drawable.BitmapDrawable
+
+
+
 
 @AndroidEntryPoint
 class AddNewFlower : Fragment() {
@@ -27,7 +35,6 @@ class AddNewFlower : Fragment() {
 
     private val selectPictureLauncher = registerForActivityResult(ActivityResultContracts.GetContent()){
         binding.imageView.setImageURI(it)
-        imageFlower = it.path.toString()
     }
 
     private var tempImageUri: Uri? = null
@@ -61,12 +68,14 @@ class AddNewFlower : Fragment() {
 
             val flowerToAdd = Flower(name = name, latinName = latinName, description = description, wateringInterval = wateringInterval, imageUrl = imageFlower)
             viewModel.addFlower(flowerToAdd)
+
+
         }
 
         binding.takePictureBtn.setOnClickListener {
-            tempImageUri = FileProvider.getUriForFile(this.requireContext(), "com.kevin.hanakotoba.provider", createImageFile().also {
-                tempImageFilePath = it.absolutePath
-            })
+            tempImageUri = FileProvider.getUriForFile(this.requireContext(), "com.kevin.hanakotoba.provider", createImageFile())
+
+            imageFlower = tempImageFilePath
 
             cameraLauncher.launch(tempImageUri)
         }
@@ -79,7 +88,15 @@ class AddNewFlower : Fragment() {
     }
 
     private fun createImageFile(): File {
-        val storageDir = this.requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile("temp_image", ".jpg", storageDir)
+        // Create an image file name
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDir: File? = this.requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(
+            "tempImage_${timeStamp}_",
+            ".jpg",
+            storageDir
+        ).apply {
+            tempImageFilePath = absolutePath
+        }
     }
 }

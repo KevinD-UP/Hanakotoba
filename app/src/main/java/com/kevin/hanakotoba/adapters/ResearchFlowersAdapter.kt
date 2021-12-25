@@ -4,17 +4,20 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
+
 import androidx.recyclerview.widget.RecyclerView
 import com.kevin.hanakotoba.FlowerDescriptionFragment
-import com.kevin.hanakotoba.UserFlowerDescriptionFragment
 
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayout2Binding
 import dagger.hilt.android.internal.managers.FragmentComponentManager
+import android.graphics.BitmapFactory
+
+import java.io.File
+
 
 class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>() {
 
@@ -31,6 +34,11 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val currentItem = flowerList[position]
+        val imgFile = File(currentItem.imageUrl)
+        if (imgFile.exists()) {
+            val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
+            holder.binding.imageView.setImageBitmap(myBitmap)
+        }
         holder.binding.userFlowerName.text = currentItem.name
 
         holder.itemView.setOnClickListener {
