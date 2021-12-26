@@ -8,6 +8,7 @@ import com.kevin.hanakotoba.data.GardenRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,9 +17,9 @@ class FlowerDescriptionViewModel @Inject internal constructor(
     private val flowerRepository: FlowerRepository
 ) : ViewModel() {
 
-        fun addFlowerInGarden(flowerId: Int) {
+        fun addFlowerInGarden(flowerId: Int, lastWateringDate : Calendar) {
             viewModelScope.launch {
-                gardenRepository.insertFlowerInGarden(flowerId)
+                gardenRepository.insertFlowerInGarden(flowerId,lastWateringDate)
             }
         }
 
@@ -29,7 +30,7 @@ class FlowerDescriptionViewModel @Inject internal constructor(
         }
         fun updateFlowerInGarden(flowerId: Int) {
             viewModelScope.launch {
-                flowerRepository.wateredFlower(flowerId)
+       /*         flowerRepository.wateredFlower(flowerId)*/
             }
         }
 

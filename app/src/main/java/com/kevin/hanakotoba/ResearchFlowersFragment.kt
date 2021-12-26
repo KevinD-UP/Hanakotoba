@@ -1,6 +1,8 @@
 package com.kevin.hanakotoba
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kevin.hanakotoba.adapters.ResearchFlowersAdapter
+import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.FragmentResearchFlowersBinding
 import com.kevin.hanakotoba.viewmodels.ResearchFlowersViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,8 +20,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ResearchFlowersFragment : Fragment() {
     private lateinit var binding : FragmentResearchFlowersBinding
-
     private lateinit var researchViewModel : ResearchFlowersViewModel
+
+    private var wateringIntervalFilter = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +41,51 @@ class ResearchFlowersFragment : Fragment() {
             adapter.setFlower(flower)
         })
 
+
+        binding.researchBox.addTextChangedListener( object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                    filter(p0.toString(),adapter)
+
+            }
+        })
+
+        binding.wateringIntervalFilter.setOnClickListener{
+            wateringIntervalFilter = !wateringIntervalFilter
+            if(wateringIntervalFilter){
+                binding.wateringIntervalFilter.setBackgroundResource(R.drawable.rounded_corner_textview)
+                adapter.setSortFilter("wateringInterval")
+
+            } else {
+                binding.wateringIntervalFilter.setBackgroundResource(0)
+                adapter.setSortFilter()
+            }
+        }
         return view
     }
+
+    fun filter(text: String, adapter : ResearchFlowersAdapter){
+
+        val filteredFlowers = mutableListOf<Flower>()
+
+        researchViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
+            for( current_flower in flower){
+                if(current_flower.name.lowercase().contains(text.lowercase())){
+                    filteredFlowers.add(current_flower)
+                }
+            }
+            adapter.setFlower(filteredFlowers)
+        })
+
+
+
+    }
+
 
 
 }

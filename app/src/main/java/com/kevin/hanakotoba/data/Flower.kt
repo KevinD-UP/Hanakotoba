@@ -15,7 +15,6 @@ data class Flower(
     val name: String,
     val latinName: String,
     val description: String,
-    var lastWateringDate: Calendar = Calendar.getInstance(),
     val wateringInterval: Int = 7, //How often the plant should be watering in day.
     val imageUrl: String = ""
 ) : Serializable {
@@ -23,7 +22,7 @@ data class Flower(
     /**
      * Determines if the plant should be watered.
      */
-    fun shouldBeWatered(): Boolean {
+ /*   fun shouldBeWatered(): Boolean {
         val limit = this.lastWateringDate
         limit.add(Calendar.DATE, wateringInterval)
         return limit >= Calendar.getInstance()
@@ -31,7 +30,7 @@ data class Flower(
 
     fun watered() {
         lastWateringDate = Calendar.getInstance()
-    }
+    }*/
 
 
     override fun toString() = name

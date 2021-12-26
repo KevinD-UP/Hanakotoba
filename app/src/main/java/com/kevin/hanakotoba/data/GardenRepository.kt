@@ -1,5 +1,6 @@
 package com.kevin.hanakotoba.data
 
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,8 +14,9 @@ class GardenRepository @Inject constructor(
 
     fun getPlantedGardens() = gardenPlantingDao.getPlantedGardens()
 
-    suspend fun insertFlowerInGarden(flowerId: Int) {
+    suspend fun insertFlowerInGarden(flowerId: Int, lastWateringDate : Calendar) {
         val garden = Garden(flowerId)
+        garden.lastWateringDate = lastWateringDate
         gardenPlantingDao.insertFlowerInGarden(garden)
     }
 

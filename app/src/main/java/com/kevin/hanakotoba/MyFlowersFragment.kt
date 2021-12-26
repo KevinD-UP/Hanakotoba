@@ -10,14 +10,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kevin.hanakotoba.databinding.FragmentMyFlowersBinding
 import com.kevin.hanakotoba.adapters.MyFlowerAdapter
-import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.viewmodels.MyFlowerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MyFlowersFragment : Fragment() {
 
-    private lateinit var myFlowerViewModel : MyFlowerViewModel
+     lateinit var myFlowerViewModel : MyFlowerViewModel
+
 
     private lateinit var binding : FragmentMyFlowersBinding
 
@@ -27,20 +27,21 @@ class MyFlowersFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_my_flowers,container,false)
-
         myFlowerViewModel = ViewModelProvider(this).get(MyFlowerViewModel::class.java)
-
         binding = FragmentMyFlowersBinding.bind(view)
 
         val adapter = MyFlowerAdapter()
-
         binding.rvMyFlowers.adapter = adapter
         binding.rvMyFlowers.layoutManager = LinearLayoutManager(requireContext())
 
+
         myFlowerViewModel.flowerAndGarden.observe(viewLifecycleOwner, Observer { flowerAndGardens ->
-            val onlyFlower = mutableListOf<Flower>()
-            flowerAndGardens.map { flowerAndGarden -> onlyFlower.add(flowerAndGarden.flower) }
-            adapter.setFlower(onlyFlower)
+       /*     val onlyFlower = mutableListOf<Flower>()
+
+            flowerAndGardens.map { flowerAndGarden -> onlyFlower.add(flowerAndGarden.flower)
+
+            Log.d("DEBUG",onlyFlower.size.toString())*/
+            adapter.setFlower(flowerAndGardens)
         })
 
 

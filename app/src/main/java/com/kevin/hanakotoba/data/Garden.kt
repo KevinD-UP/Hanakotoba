@@ -13,13 +13,14 @@ import java.util.*
     tableName = "garden",
     foreignKeys = [
         ForeignKey(entity = Flower::class, parentColumns = ["id"], childColumns = ["flower_id"])
-    ],
-    indices = [Index("flower_id")]
+    ]
 )
 data class Garden(
     @ColumnInfo(name = "flower_id") val flowerId: Int,
 ) {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "garden_flower_id")
     var gardenId: Long = 0
+    @ColumnInfo(name = "last_watering_date")
+    var lastWateringDate : Calendar = Calendar.getInstance()
 }

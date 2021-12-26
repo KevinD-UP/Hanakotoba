@@ -19,7 +19,9 @@ interface GardenDao {
      * the object mapping.
      */
     @Transaction
-    @Query("SELECT * FROM flower WHERE id IN (SELECT DISTINCT(flower_id) FROM garden)")
+/*    @Query("SELECT  *  FROM flower, garden where flower.id = garden.flower_id")*/
+/*    @Query("SELECT * FROM flower WHERE id IN (SELECT DISTINCT(flower_id) FROM garden)")*/
+    @Query("SELECT  *  FROM flower, garden where flower.id = garden.flower_id")
     fun getPlantedGardens(): Flow<List<FlowerAndGarden>>
 
     @Insert

@@ -2,15 +2,29 @@ package com.kevin.hanakotoba.data;
 
 import androidx.room.Embedded
 import androidx.room.Relation
+import java.io.Serializable
 
-/**
- * This class captures the relationship between a [Flower] and a user's [Garden], which is
- * used by Room to fetch the related entities.
- */
 data class FlowerAndGarden(
         @Embedded
-        val flower: Flower,
+        val garden : Garden,
 
-        @Relation(parentColumn = "id", entityColumn = "flower_id")
-        val gardenPlantings: List<Garden> = emptyList()
-)
+        @Relation(parentColumn = "flower_id", entityColumn = "id")
+        val flower: Flower
+): Serializable {
+
+        /**
+         * Determines if the plant should be watered.
+         */
+        /*   fun shouldBeWatered(): Boolean {
+               val limit = this.lastWateringDate
+               limit.add(Calendar.DATE, wateringInterval)
+               return limit >= Calendar.getInstance()
+           }
+
+           fun watered() {
+               lastWateringDate = Calendar.getInstance()
+           }*/
+
+}
+
+
