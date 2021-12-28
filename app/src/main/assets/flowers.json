@@ -51,7 +51,7 @@
     "id": 7,
     "name": "Anthémis",
     "latinName": "Argyranthemum frutescens" ,
-    "description": "Cerisier venant du Japon",
+    "description": "L’anthémis, merveilleuse vivace aux fleurs de pâquerette, offre une floraison du printemps à l’automne de toute beauté.",
     "wateringInterval": 7,
     "imageUrl": ""
   },
@@ -67,7 +67,7 @@
     "id": 9,
     "name": "Gloxinia",
     "latinName": "Gloxinia speciosa" ,
-    "description": "Cerisier venant du Japon",
+    "description": "Le gloxinia émerveille nos intérieurs grâce à sa magnifique floraison estivale",
     "wateringInterval": 7,
     "imageUrl": ""
   },
