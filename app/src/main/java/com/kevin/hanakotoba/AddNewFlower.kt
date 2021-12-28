@@ -22,8 +22,7 @@ import java.util.*
 import android.graphics.Bitmap
 
 import android.graphics.drawable.BitmapDrawable
-
-
+import java.io.FileOutputStream
 
 
 @AndroidEntryPoint
@@ -35,6 +34,21 @@ class AddNewFlower : Fragment() {
 
     private val selectPictureLauncher = registerForActivityResult(ActivityResultContracts.GetContent()){
         binding.imageView.setImageURI(it)
+
+        val draw = binding.imageView.drawable as BitmapDrawable
+        val bitmap = draw.bitmap
+
+        var outStream: FileOutputStream? = null
+        val sdCard = this.requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val dir = File(sdCard!!.absolutePath)
+        dir.mkdirs()
+        val fileName = String.format("%d.jpg", System.currentTimeMillis())
+        val outFile = File(dir, fileName)
+        outStream = FileOutputStream(outFile)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream)
+        outStream.flush()
+        outStream.close()
+        imageFlower = outFile.absolutePath
     }
 
     private var tempImageUri: Uri? = null
