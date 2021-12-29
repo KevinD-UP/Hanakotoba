@@ -73,15 +73,43 @@ class AddNewFlower : Fragment() {
         viewModel = ViewModelProvider(this).get(AddNewFlowerViewModel::class.java)
 
         binding.addFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "[FlowerDescription - onCreateView] Add : ", Toast.LENGTH_SHORT).show()
-            val name = binding.name.text.toString()
-            val latinName = binding.latinName.text.toString()
-            val description = binding.description.text.toString()
-            val wateringInterval = binding.wateringInterval.text.toString().toInt()
-            val imageFlower = this.imageFlower
+            try {
+                var name = ""
+                var latinName = ""
+                var description = ""
+                var wateringInterval = ""
+                var imageFlower = ""
+                if(binding.name.text.toString() != "")
+                    name = binding.name.text.toString()
+                if(binding.latinName.text.toString() != "")
+                    latinName = binding.latinName.text.toString()
+                if(binding.description.text.toString() != "")
+                    description = binding.description.text.toString()
+                if(binding.wateringInterval.text.toString() != "")
+                    wateringInterval = binding.wateringInterval.text.toString()
+                if(imageFlower != "")
+                    imageFlower = this.imageFlower
 
-            val flowerToAdd = Flower(name = name, latinName = latinName, description = description, wateringInterval = wateringInterval, imageUrl = imageFlower)
-            viewModel.addFlower(flowerToAdd)
+                val flowerToAdd = Flower(
+                    name = name,
+                    latinName = latinName,
+                    description = description,
+                    wateringInterval = wateringInterval.toInt(),
+                    imageUrl = imageFlower
+                )
+                viewModel.addFlower(flowerToAdd)
+                Toast.makeText(
+                    context,
+                    "Flower $name has been added",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }catch (e: Exception){
+                Toast.makeText(
+                    context,
+                    "Field aren't completed correctly, please verify informations",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
 
 
         }
