@@ -24,11 +24,6 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
     private lateinit var flowerDescriptionViewModel: FlowerDescriptionViewModel
     private lateinit var flower: Flower
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +41,7 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding.flowerNameTxt.text = flower.name
         binding.addFlowerBtn.setOnClickListener {
             flowerDescriptionViewModel.addFlowerInGarden(flower.flower_id)
-            Toast.makeText(context, "[FlowerDescription - onCreateView] ADD : ${flower.name}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Added to garden : ${flower.name}", Toast.LENGTH_SHORT).show()
         }
 
         binding.deleteFlowerBtn.setOnClickListener {

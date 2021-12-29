@@ -16,9 +16,6 @@ class GardenFragment : Fragment() {
 
     private lateinit var binding : FragmentGardenBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,9 +41,4 @@ class GardenFragment : Fragment() {
 
         return view
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-    }
-
 }

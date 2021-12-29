@@ -37,7 +37,7 @@ class MyFlowersFragment : Fragment() {
         binding.rvMyFlowers.adapter = adapter
         binding.rvMyFlowers.layoutManager = LinearLayoutManager(requireContext())
 
-        myFlowerViewModel.flowerAndGarden.observe(viewLifecycleOwner, Observer { flowerAndGardens ->
+        myFlowerViewModel.flowerAndGarden.observe(viewLifecycleOwner, { flowerAndGardens ->
             val onlyFlower = mutableListOf<Flower>()
             flowerAndGardens.map { flowerAndGarden -> onlyFlower.add(flowerAndGarden.flower) }
             adapter.setFlower(onlyFlower)

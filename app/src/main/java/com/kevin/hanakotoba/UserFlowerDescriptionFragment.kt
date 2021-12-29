@@ -22,10 +22,6 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
     private lateinit var flowerDescriptionViewModel: FlowerDescriptionViewModel
     private lateinit var flower: Flower;
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,7 +49,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding.waterFlowerBtn.setOnClickListener {
             flower.watered()
             flowerDescriptionViewModel.updateFlowerInGarden(flower.flower_id)
-            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Water : ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Watered : ${flower.name}", Toast.LENGTH_SHORT).show();
         }
 
         binding.updateBtn.setOnClickListener {
@@ -75,7 +71,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
             flowerDescriptionViewModel.deleteFlowerInGarden(flower_id)
             Toast.makeText(
                 context,
-                "[FlowerDescription - onCreateView] Delete : ${flower.name}",
+                "Delete : ${flower.name}",
                 Toast.LENGTH_SHORT
             ).show()
             dialog.cancel()
