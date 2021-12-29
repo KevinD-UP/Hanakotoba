@@ -1,5 +1,7 @@
 package com.kevin.hanakotoba
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,8 +41,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding.flowerNameTxt.text = flower.name
 
         binding.deleteFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Delete ", Toast.LENGTH_SHORT).show();
-            flowerDescriptionViewModel.deleteFlowerInGarden(flower.flower_id)
+            deleteEvent(flower.flower_id)
         }
 
         if(flower.shouldBeWatered()) {
@@ -50,9 +51,9 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         }
 
         binding.waterFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Water : ", Toast.LENGTH_SHORT).show();
             flower.watered()
             flowerDescriptionViewModel.updateFlowerInGarden(flower.flower_id)
+            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Water : ", Toast.LENGTH_SHORT).show();
         }
 
         binding.updateBtn.setOnClickListener {
@@ -64,5 +65,25 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         }
 
         return view
+    }
+
+    private fun deleteEvent(flower_id: Int){
+        val builder = AlertDialog.Builder(this.requireContext())
+        builder.setTitle("Delete ${flower.name}")
+        builder.setMessage("Are you sure you want to delete this flower ?")
+        builder.setPositiveButton("Yes") { dialog, _ ->
+            flowerDescriptionViewModel.deleteFlowerInGarden(flower_id)
+            Toast.makeText(
+                context,
+                "[FlowerDescription - onCreateView] Delete : ${flower.name}",
+                Toast.LENGTH_SHORT
+            ).show()
+            dialog.cancel()
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.cancel()
+        }
+        val alert = builder.create()
+        alert.show()
     }
 }

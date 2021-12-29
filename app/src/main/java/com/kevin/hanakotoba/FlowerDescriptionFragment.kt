@@ -1,5 +1,7 @@
 package com.kevin.hanakotoba
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,13 +45,12 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
 
         binding.flowerNameTxt.text = flower.name
         binding.addFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "[FlowerDescription - onCreateView] ADD : ${flower.name}", Toast.LENGTH_SHORT).show()
             flowerDescriptionViewModel.addFlowerInGarden(flower.flower_id)
+            Toast.makeText(context, "[FlowerDescription - onCreateView] ADD : ${flower.name}", Toast.LENGTH_SHORT).show()
         }
 
         binding.deleteFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "[FlowerDescription - onCreateView] Delete : ${flower.name}", Toast.LENGTH_SHORT).show()
-            flowerDescriptionViewModel.deleteFlower(flower)
+            deleteEvent(flower)
         }
 
         binding.UpdateFlowerBtn.setOnClickListener {
@@ -65,5 +66,25 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
         }
 
         return view
+    }
+
+    private fun deleteEvent(flower: Flower){
+        val builder = AlertDialog.Builder(this.requireContext())
+        builder.setTitle("Delete ${flower.name}")
+        builder.setMessage("Are you sure you want to delete this flower ?")
+        builder.setPositiveButton("Yes") { dialog, _ ->
+            flowerDescriptionViewModel.deleteFlower(flower)
+            Toast.makeText(
+                context,
+                "[FlowerDescription - onCreateView] Delete : ${flower.name}",
+                Toast.LENGTH_SHORT
+            ).show()
+            dialog.cancel()
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.cancel()
+        }
+        val alert = builder.create()
+        alert.show()
     }
 }
