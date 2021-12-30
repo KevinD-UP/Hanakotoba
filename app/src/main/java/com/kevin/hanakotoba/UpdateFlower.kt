@@ -1,5 +1,6 @@
 package com.kevin.hanakotoba
 
+import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
@@ -39,7 +40,7 @@ class UpdateFlower : Fragment() {
         val draw = binding.imageView.drawable as BitmapDrawable
         val bitmap = draw.bitmap
 
-        var outStream: FileOutputStream? = null
+        val outStream: FileOutputStream?
         val sdCard = this.requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         val dir = File(sdCard!!.absolutePath)
         dir.mkdirs()
@@ -88,38 +89,34 @@ class UpdateFlower : Fragment() {
 
         binding.updateFlowerBtn.setOnClickListener {
             try {
-                val idFlower = flower.flower_id
-                var name = ""
-                var latinName = ""
-                var description = ""
-                var wateringInterval = ""
-                var imageFlower = ""
-                if(binding.name.text.toString() != "")
-                    name = binding.name.text.toString()
-                if(binding.latinName.text.toString() != "")
-                    latinName = binding.latinName.text.toString()
-                if(binding.description.text.toString() != "")
-                    description = binding.description.text.toString()
-                if(binding.wateringInterval.text.toString() != "")
-                    wateringInterval = binding.wateringInterval.text.toString()
-                if(imageFlower != "")
-                    imageFlower = this.imageFlower
+                val name = binding.name.text.toString()
+                val latinName = binding.latinName.text.toString()
+                val description = binding.description.text.toString()
+                val wateringInterval = binding.wateringInterval.text.toString()
+                val imageFlower = this.imageFlower
 
-                val flowerToUpdate = Flower(
-                    flower_id = idFlower,
-                    name = name,
-                    latinName = latinName,
-                    description = description,
-                    wateringInterval = wateringInterval.toInt(),
-                    imageUrl = imageFlower
-                )
-                viewModel.updateFlower(flowerToUpdate)
-                Toast.makeText(
-                    context,
-                    "Flower with id: $idFlower has been updated ",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }catch (e: Exception){
+                if ((name != "" || latinName != "") && wateringInterval != "") {
+                    val flowerToUpdate = Flower(
+                        name = name,
+                        latinName = latinName,
+                        description = description,
+                        wateringInterval = wateringInterval.toInt(),
+                        imageUrl = imageFlower
+                    )
+                    viewModel.updateFlower(flowerToUpdate)
+                    Toast.makeText(
+                        context,
+                        "Flower $name ($latinName) has been added",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        context,
+                        "Field aren't completed correctly, please verify informations",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } catch (e: Exception) {
                 Toast.makeText(
                     context,
                     "Field aren't completed correctly, please verify informations",
@@ -127,6 +124,7 @@ class UpdateFlower : Fragment() {
                 ).show()
             }
         }
+
 
         binding.takePictureBtn.setOnClickListener {
             tempImageUri = FileProvider.getUriForFile(this.requireContext(), "com.kevin.hanakotoba.provider", createImageFile())
@@ -144,6 +142,7 @@ class UpdateFlower : Fragment() {
         return view
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun createImageFile(): File {
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val storageDir: File? = this.requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)

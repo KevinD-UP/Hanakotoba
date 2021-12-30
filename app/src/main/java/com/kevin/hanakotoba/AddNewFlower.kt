@@ -1,5 +1,6 @@
 package com.kevin.hanakotoba
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -38,7 +39,7 @@ class AddNewFlower : Fragment() {
         val draw = binding.imageView.drawable as BitmapDrawable
         val bitmap = draw.bitmap
 
-        var outStream: FileOutputStream? = null
+        val outStream: FileOutputStream?
         val sdCard = this.requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         val dir = File(sdCard!!.absolutePath)
         dir.mkdirs()
@@ -74,35 +75,33 @@ class AddNewFlower : Fragment() {
 
         binding.addFlowerBtn.setOnClickListener {
             try {
-                var name = ""
-                var latinName = ""
-                var description = ""
-                var wateringInterval = ""
-                var imageFlower = ""
-                if(binding.name.text.toString() != "")
-                    name = binding.name.text.toString()
-                if(binding.latinName.text.toString() != "")
-                    latinName = binding.latinName.text.toString()
-                if(binding.description.text.toString() != "")
-                    description = binding.description.text.toString()
-                if(binding.wateringInterval.text.toString() != "")
-                    wateringInterval = binding.wateringInterval.text.toString()
-                if(imageFlower != "")
-                    imageFlower = this.imageFlower
+                val name = binding.name.text.toString()
+                val latinName = binding.latinName.text.toString()
+                val description = binding.description.text.toString()
+                val wateringInterval = binding.wateringInterval.text.toString()
+                val imageFlower = this.imageFlower
 
-                val flowerToAdd = Flower(
-                    name = name,
-                    latinName = latinName,
-                    description = description,
-                    wateringInterval = wateringInterval.toInt(),
-                    imageUrl = imageFlower
-                )
-                viewModel.addFlower(flowerToAdd)
-                Toast.makeText(
-                    context,
-                    "Flower $name has been added",
-                    Toast.LENGTH_SHORT
-                ).show()
+                if((name != "" || latinName != "") && wateringInterval != "") {
+                    val flowerToAdd = Flower(
+                        name = name,
+                        latinName = latinName,
+                        description = description,
+                        wateringInterval = wateringInterval.toInt(),
+                        imageUrl = imageFlower
+                    )
+                    viewModel.addFlower(flowerToAdd)
+                    Toast.makeText(
+                        context,
+                        "Flower $name ($latinName) has been added",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        context,
+                        "Field aren't completed correctly, please verify informations",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }catch (e: Exception){
                 Toast.makeText(
                     context,
@@ -110,8 +109,6 @@ class AddNewFlower : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-
-
         }
 
         binding.takePictureBtn.setOnClickListener {
@@ -129,6 +126,7 @@ class AddNewFlower : Fragment() {
         return view
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun createImageFile(): File {
         // Create an image file name
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
