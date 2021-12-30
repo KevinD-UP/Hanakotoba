@@ -27,13 +27,12 @@ class GardenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_garden,container,false)
 
+        val view = inflater.inflate(R.layout.fragment_garden,container,false)
         binding = FragmentGardenBinding.bind(view)
 
         val names = listOf("MY FLOWERS","RESEARCH")
-
-        val myFlowersFragment = MyFlowersFragment()
+        val myFlowersFragment = MyFlowersFragment(false)
         val myResearchFlowersFragment = ResearchFlowersFragment()
 
         val pagerAdapter = ViewPagerAdapter(
@@ -47,29 +46,10 @@ class GardenFragment : Fragment() {
         }.attach()
 
 
-
-   /*     binding.researchBox.addTextChangedListener(object : TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                Toast.makeText(requireContext(),binding.researchBox.text,Toast.LENGTH_SHORT).show()
-            }
-
-        })*/
-
         return view
     }
 
 
-    fun filter (text : String){
-        val filteredFlowers = mutableListOf<Flower>()
-
-
-    }
 
 
 }

@@ -23,4 +23,10 @@ data class Garden(
     var gardenId: Long = 0
     @ColumnInfo(name = "last_watering_date")
     var lastWateringDate : Calendar = Calendar.getInstance()
+
+    @ColumnInfo(name = "next_watering_date")
+    var nextWateringDate : Calendar = Calendar.getInstance()
+
+
+
 }

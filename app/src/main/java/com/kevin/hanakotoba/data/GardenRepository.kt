@@ -1,5 +1,7 @@
 package com.kevin.hanakotoba.data
 
+import android.app.AlertDialog
+import android.util.Log
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,18 +16,29 @@ class GardenRepository @Inject constructor(
 
     fun getPlantedGardens() = gardenPlantingDao.getPlantedGardens()
 
-    suspend fun insertFlowerInGarden(flowerId: Int, lastWateringDate : Calendar) {
-        val garden = Garden(flowerId)
+    suspend fun getFlowerFromGarden(id :  Int ) = gardenPlantingDao.getFlowerFromGarden(id)
+
+    suspend fun insertFlowerInGarden(flower: Flower, lastWateringDate : Calendar) : Long {
+        val garden = Garden(flower.flower_id)
         garden.lastWateringDate = lastWateringDate
-        gardenPlantingDao.insertFlowerInGarden(garden)
+
+        val year = lastWateringDate.get(Calendar.YEAR)
+        val month = lastWateringDate.get(Calendar.MONTH)
+        val day = lastWateringDate.get(Calendar.DAY_OF_MONTH)
+        Log.d("INSERT","$day $month $year")
+
+        val nextWateringDate = lastWateringDate.clone() as Calendar
+        nextWateringDate.add(Calendar.DATE,flower.wateringInterval)
+        garden.nextWateringDate = nextWateringDate
+
+        return gardenPlantingDao.insertFlowerInGarden(garden)
     }
 
-    suspend fun deleteFlowerInGarden(flowerId: Int) {
+    suspend fun deleteFlowerInGarden(flowerId: Long) {
         gardenPlantingDao.deleteFlowerInGarden(flowerId)
     }
 
-    suspend fun updateFlowerInGarden(flowerId: Int){
-        val garden = Garden(flowerId)
-        gardenPlantingDao.updateFlowerInGarden(garden)
+    suspend fun updateFlowerInGarden(gardenFlower : Garden){
+        gardenPlantingDao.updateFlowerInGarden(gardenFlower)
     }
 }

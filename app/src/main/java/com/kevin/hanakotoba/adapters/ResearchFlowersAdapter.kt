@@ -4,26 +4,22 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SortedList
 import com.kevin.hanakotoba.FlowerDescriptionFragment
-import com.kevin.hanakotoba.UserFlowerDescriptionFragment
-
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayout2Binding
 import dagger.hilt.android.internal.managers.FragmentComponentManager
 
-class ResearchFlowersAdapter() : RecyclerView.Adapter<ResearchFlowersAdapter.VH>() {
+class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>() {
 
     private var flowerList = emptyList<Flower>()
 
     var sortBy = ""
 
-    val callback = object : SortedList.Callback<Flower>() {
+    private val callback = object : SortedList.Callback<Flower>() {
         override fun compare(o1: Flower?, o2: Flower?): Int {
          if (o1 != null && o2 != null) {
              if(sortBy == "wateringInterval") {
@@ -78,12 +74,10 @@ class ResearchFlowersAdapter() : RecyclerView.Adapter<ResearchFlowersAdapter.VH>
 
         holder.itemView.setOnClickListener {
             val activity =  FragmentComponentManager.findActivity(holder.itemView.context) as AppCompatActivity
-
             val fragment : DialogFragment = FlowerDescriptionFragment()
             val bundle = Bundle()
-            bundle.putSerializable("flower", currentItem);
+            bundle.putSerializable("flower", currentItem)
             fragment.arguments = bundle
-
             fragment.show(activity.supportFragmentManager,"dialog")
         }
 
