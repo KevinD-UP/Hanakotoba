@@ -15,11 +15,6 @@
         android:orientation="horizontal"
         android:padding="5dp">
 
-        <Button
-            android:id="@+id/takePicture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="T" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -31,11 +26,6 @@
             android:scaleType="centerCrop"
             android:src="@drawable/flower" />
 
-        <Button
-            android:id="@+id/getPicture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="G" />
 
 
     </LinearLayout>
