@@ -9,26 +9,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.kevin.hanakotoba.Alarm
 import com.kevin.hanakotoba.UserFlowerDescriptionFragment
-import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.data.FlowerAndGarden
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
-import com.kevin.hanakotoba.dependencyInjection.DatabaseModule
 import com.kevin.hanakotoba.viewmodels.FlowerDescriptionViewModel
 import dagger.hilt.android.internal.managers.FragmentComponentManager
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.util.*
 import java.util.concurrent.TimeUnit
 import java.io.File
-import kotlin.concurrent.thread
+
 
 class MyFlowerAdapter (private var flowerDescriptionViewModel: FlowerDescriptionViewModel) : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
 
@@ -51,7 +45,7 @@ class MyFlowerAdapter (private var flowerDescriptionViewModel: FlowerDescription
         val msDiff = currentFlowerAndGarden.garden.nextWateringDate.timeInMillis - Calendar.getInstance().timeInMillis
         val daysDiff = TimeUnit.MILLISECONDS.toDays(msDiff)
         Log.d("TIME",daysDiff.toString())
-        val imgFile = File(currentFlowerAndGarden.imageUrl)
+        val imgFile = File(currentFlowerAndGarden.flower.imageUrl)
         if (imgFile.exists()) {
             val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
             holder.binding.imageView.setImageBitmap(myBitmap)

@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -60,7 +61,7 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
         initAddPlant(alarm,c)
 
         binding.addFlowerBtn.setOnClickListener {
-            flowerDescriptionViewModel.addFlowerInGarden(flower.flower_id)
+            flowerDescriptionViewModel.addFlowerInGarden(flower)
             Toast.makeText(context, "Added to garden : ${flower.name}", Toast.LENGTH_SHORT).show()
         }
 
@@ -83,7 +84,7 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
         return view
     }
 
-    @SuppressLint("ResourceType")
+    @SuppressLint("ResourceType", "SetTextI18n")
     private fun setDate(c: Calendar) {
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
@@ -92,7 +93,7 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
 
         binding.datePicker.setOnClickListener{
             val pickDate = DatePickerDialog(requireContext(),3,
-                { view, year, monthOfYear, dayOfMonth ->
+                { _, year, monthOfYear, dayOfMonth ->
                     Log.d("Date", "$dayOfMonth $monthOfYear $year")
                     binding.datePicker.setText("$dayOfMonth/$monthOfYear/$year")
                     c.set(year,monthOfYear,dayOfMonth)
@@ -126,7 +127,7 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     private fun initAddPlant(alarm : Alarm, calendar : Calendar) {
         binding.AddPlantBtn.setOnClickListener {
-            flowerDescriptionViewModel.addFlowerInGarden(flower,calendar).observe(viewLifecycleOwner, {
+            flowerDescriptionViewModel.addFlowerInGarden(flower, calendar).observe(viewLifecycleOwner, {
                 calendar.add(Calendar.DATE,flower.wateringInterval)
                 alarm.scheduleNotification(flower.name,it.toString(),calendar)
             })

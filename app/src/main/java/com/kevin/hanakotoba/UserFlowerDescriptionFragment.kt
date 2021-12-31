@@ -1,13 +1,11 @@
 package com.kevin.hanakotoba
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +13,10 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.data.FlowerAndGarden
 import com.kevin.hanakotoba.databinding.FragmentUserFlowerDescriptionBinding
 import com.kevin.hanakotoba.viewmodels.FlowerDescriptionViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -52,6 +48,10 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding.nextWateringTxt.setText(dateFormat.format(flower.garden.nextWateringDate.time))
         binding.timePicker.setText(String.format("%02d:%02d", currentFlowerTime.get(Calendar.HOUR_OF_DAY), currentFlowerTime.get(Calendar.MINUTE)))
 
+        binding.deleteFlowerBtn.setOnClickListener {
+            deleteEvent(flower.flower.flower_id.toLong())
+        }
+
         displayWaterBtn()
         setNextDate(currentFlowerTime)
         setTime(currentFlowerTime)
@@ -61,9 +61,6 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
 
         return view
     }
-        binding.deleteFlowerBtn.setOnClickListener {
-            deleteEvent(flower.flower_id)
-        }
 
     @SuppressLint("ResourceType", "SetTextI18n")
     private fun setNextDate(calendar: Calendar) {
@@ -118,9 +115,8 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun initWater(){
         binding.waterFlowerBtn.setOnClickListener {
-            flower.watered()
-            flowerDescriptionViewModel.updateFlowerInGarden(flower.flower_id)
-            Toast.makeText(context, "Watered : ${flower.name}", Toast.LENGTH_SHORT).show();
+            flowerDescriptionViewModel.updateFlowerInGarden(flower.garden)
+            Toast.makeText(context, "Watered : ${flower.flower.name}", Toast.LENGTH_SHORT).show();
         }
 
         binding.updateBtn.setOnClickListener {
@@ -158,15 +154,15 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         alarm.scheduleNotification(flower.flower.name,flower.garden.gardenId.toString(),calendar)
     }
 
-    private fun deleteEvent(flower_id: Int){
+    private fun deleteEvent(flower_id: Long){
         val builder = AlertDialog.Builder(this.requireContext())
-        builder.setTitle("Delete ${flower.name}")
+        builder.setTitle("Delete ${flower.flower.name}")
         builder.setMessage("Are you sure you want to delete this flower ?")
         builder.setPositiveButton("Yes") { dialog, _ ->
             flowerDescriptionViewModel.deleteFlowerInGarden(flower_id)
             Toast.makeText(
                 context,
-                "Delete : ${flower.name}",
+                "Delete : ${flower.flower.name}",
                 Toast.LENGTH_SHORT
             ).show()
             dialog.cancel()
