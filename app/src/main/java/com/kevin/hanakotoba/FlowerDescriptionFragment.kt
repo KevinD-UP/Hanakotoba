@@ -1,10 +1,10 @@
 package com.kevin.hanakotoba
 
 import android.annotation.SuppressLint
-import android.app.*
-import android.os.Build
 import android.app.AlertDialog
-import android.content.DialogInterface
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,10 +15,10 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kevin.hanakotoba.data.Flower
+import com.kevin.hanakotoba.databinding.FragmentFlowerDescriptionBinding
 import com.kevin.hanakotoba.viewmodels.FlowerDescriptionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
-import com.kevin.hanakotoba.databinding.FragmentFlowerDescriptionBinding
 
 
 @AndroidEntryPoint
@@ -56,11 +56,6 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
         setTime(c)
         initAddPlant(alarm,c)
 
-        binding.AddPlantBtn.setOnClickListener {
-            flowerDescriptionViewModel.addFlowerInGarden(flower)
-            Toast.makeText(context, "Added to garden : ${flower.name}", Toast.LENGTH_SHORT).show()
-        }
-
         binding.DeleteFlowerBtn.setOnClickListener {
             deleteEvent(flower)
         }
@@ -70,7 +65,7 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
             val activity = requireActivity()
 
             val newBundle = Bundle()
-            newBundle.putSerializable("flower", flower);
+            newBundle.putSerializable("flower", flower)
             updateFlowerFragment.arguments = newBundle
 
             activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, updateFlowerFragment)
@@ -127,6 +122,7 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
                 calendar.add(Calendar.DATE,flower.wateringInterval)
                 alarm.scheduleNotification(flower.name,it.toString(),calendar)
             })
+            Toast.makeText(context, "Added to garden : ${flower.name}", Toast.LENGTH_SHORT).show()
             dismiss()
         }
     }

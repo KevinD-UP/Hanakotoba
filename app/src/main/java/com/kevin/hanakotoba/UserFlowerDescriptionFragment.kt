@@ -116,16 +116,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
     fun initWater(){
         binding.waterFlowerBtn.setOnClickListener {
             flowerDescriptionViewModel.updateFlowerInGarden(flower.garden)
-            Toast.makeText(context, "Watered : ${flower.flower.name}", Toast.LENGTH_SHORT).show();
-        }
-
-        binding.updateBtn.setOnClickListener {
-            val updateFlowerFragment = UpdateFlower()
-            val activity = requireActivity()
-
-            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, updateFlowerFragment)
-                .addToBackStack(null).commit()
-            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Water ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Watered : ${flower.flower.name}", Toast.LENGTH_SHORT).show()
             flower.garden.lastWateringDate = flower.garden.nextWateringDate
             val copy : Calendar= flower.garden.nextWateringDate.clone() as Calendar
             copy.add(Calendar.DATE,flower.flower.wateringInterval)
