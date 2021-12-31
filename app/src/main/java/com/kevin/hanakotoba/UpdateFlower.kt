@@ -89,6 +89,7 @@ class UpdateFlower : Fragment() {
 
         binding.updateFlowerBtn.setOnClickListener {
             try {
+                val flowerId = flower.flower_id
                 val name = binding.name.text.toString()
                 val latinName = binding.latinName.text.toString()
                 val description = binding.description.text.toString()
@@ -97,6 +98,7 @@ class UpdateFlower : Fragment() {
 
                 if ((name != "" || latinName != "") && wateringInterval != "") {
                     val flowerToUpdate = Flower(
+                        flowerId,
                         name = name,
                         latinName = latinName,
                         description = description,
@@ -106,7 +108,7 @@ class UpdateFlower : Fragment() {
                     viewModel.updateFlower(flowerToUpdate)
                     Toast.makeText(
                         context,
-                        "Flower $name ($latinName) has been added",
+                        "Flower $name ($latinName) has been updated",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {

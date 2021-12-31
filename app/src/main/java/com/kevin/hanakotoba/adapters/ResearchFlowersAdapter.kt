@@ -83,6 +83,7 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
             holder.binding.imageView.setImageBitmap(myBitmap)
         }
         holder.binding.userFlowerName.text = currentItem.name
+        holder.binding.description.text = currentItem.description
 
         holder.itemView.setOnClickListener {
             val activity =  FragmentComponentManager.findActivity(holder.itemView.context) as AppCompatActivity
