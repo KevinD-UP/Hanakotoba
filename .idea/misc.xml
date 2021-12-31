@@ -6,10 +6,57 @@
         <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotoba/app/src/main/res/layout/activity_main.xml" value="0.1574074074074074" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotoba/app/src/main/res/layout/fragment_main2.xml" value="0.1574074074074074" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotoba/app/src/main/res/layout/item_layout.xml" value="0.1574074074074074" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/drawable/date_picker_style.xml" value="0.2359375" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/drawable/datepickerstyle.xml" value="0.2359375" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/drawable/dialog_border.xml" value="0.3828125" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/drawable/dropdown_menu.xml" value="0.3828125" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/drawable/rounded_corner_textview.xml" value="0.24739583333333334" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout-land/activity_garden.xml" value="0.1746031746031746" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout-land/fragment_flower_description.xml" value="0.1746031746031746" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout-land/fragment_garden.xml" value="0.1746031746031746" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout-land/fragment_my_flowers.xml" value="0.1746031746031746" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout-land/fragment_research_flowers.xml" value="0.1746031746031746" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout-land/fragment_user_flower_description.xml" value="0.1746031746031746" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout-land/item_layout.xml" value="0.1746031746031746" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout-land/item_layout2.xml" value="0.1746031746031746" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout/activity_garden.xml" value="0.20380434782608695" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout/fragment_blank.xml" value="0.20380434782608695" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout/fragment_flower_description.xml" value="0.25" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout/fragment_garden.xml" value="0.286144578313253" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout/fragment_my_flowers.xml" value="0.33" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout/fragment_research_flowers.xml" value="0.44594594594594594" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout/fragment_user_flower_description.xml" value="0.19701086956521738" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout/item_layout.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout/item_layout2.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobaba/app/src/main/res/layout/menu.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobabe/app/src/main/res/layout/activity_main.xml" value="0.15384615384615385" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobabe/app/src/main/res/layout/fragment_flower_description.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/hanakotobabe/app/src/main/res/layout/fragment_my_flowers.xml" value="0.20520833333333333" />
+        <entry key="app/src/main/res/drawable-mdpi/layout_bg.xml" value="0.3890625" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3890625" />
+        <entry key="app/src/main/res/drawable/dialog_border.xml" value="0.3890625" />
+        <entry key="app/src/main/res/drawable/rounded_corner_textview.xml" value="0.3890625" />
+        <entry key="app/src/main/res/layout-land/activity_garden.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/add_new_flower_fragment.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/fragment_flower_description.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/fragment_garden.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/fragment_my_flowers.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/fragment_research_flowers.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/fragment_user_flower_description.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/item_layout2.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/update_flower_fragment.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout/activity_garden.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17502532928064843" />
+        <entry key="app/src/main/res/layout/add_new_flower_fragment.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_flower_description.xml" value="0.17151607963246554" />
+        <entry key="app/src/main/res/layout/fragment_garden.xml" value="0.28940217391304346" />
+        <entry key="app/src/main/res/layout/fragment_my_flowers.xml" value="0.28940217391304346" />
+        <entry key="app/src/main/res/layout/fragment_research_flowers.xml" value="0.28940217391304346" />
+        <entry key="app/src/main/res/layout/fragment_user_flower_description.xml" value="0.3729166666666667" />
+        <entry key="app/src/main/res/layout/item_layout.xml" value="0.3729166666666667" />
+        <entry key="app/src/main/res/layout/item_layout2.xml" value="0.3729166666666667" />
+        <entry key="app/src/main/res/layout/update_flower_fragment.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/xml/file_paths.xml" value="0.17325227963525835" />
       </map>
     </option>
   </component>
