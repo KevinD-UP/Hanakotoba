@@ -1,0 +1,133 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/ic_launcher"
+        android:contentDescription="Image of flower" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Name :"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:hint="Write name"
+                android:layout_height="wrap_content"
+                android:id="@+id/name"
+                android:imeOptions="flagNoExtractUi"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Latin Name :"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:hint="Write latin name"
+                android:layout_height="wrap_content"
+                android:id="@+id/latinName"
+                android:imeOptions="flagNoExtractUi"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Description"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:hint="Write Description"
+                android:layout_height="wrap_content"
+                android:id="@+id/description"
+                android:imeOptions="flagNoExtractUi"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Watering Interval"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:inputType="number"
+                android:hint="Write Interval"
+                android:layout_height="wrap_content"
+                android:id="@+id/wateringInterval"
+                android:imeOptions="flagNoExtractUi"/>
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+    <Button
+        android:id="@+id/addFlowerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginEnd="10px"
+        android:text="Add Flower" />
+
+    <Button
+        android:id="@+id/takePictureBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginEnd="10px"
+        android:text="Take Picture" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="choose Picture"
+        android:layout_marginEnd="10px"
+        android:id="@+id/choosePictureBtn"/>
+
+    </LinearLayout>
+
+</LinearLayout>
