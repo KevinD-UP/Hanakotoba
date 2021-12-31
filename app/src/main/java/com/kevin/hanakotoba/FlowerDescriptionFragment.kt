@@ -28,10 +28,6 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
     private lateinit var flowerDescriptionViewModel: FlowerDescriptionViewModel
     private lateinit var flower: Flower
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     @SuppressLint("ResourceType")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -60,12 +56,12 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
         setTime(c)
         initAddPlant(alarm,c)
 
-        binding.addFlowerBtn.setOnClickListener {
+        binding.AddPlantBtn.setOnClickListener {
             flowerDescriptionViewModel.addFlowerInGarden(flower)
             Toast.makeText(context, "Added to garden : ${flower.name}", Toast.LENGTH_SHORT).show()
         }
 
-        binding.deleteFlowerBtn.setOnClickListener {
+        binding.DeleteFlowerBtn.setOnClickListener {
             deleteEvent(flower)
         }
 

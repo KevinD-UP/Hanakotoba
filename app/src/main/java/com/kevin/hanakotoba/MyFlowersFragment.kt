@@ -44,7 +44,6 @@ class MyFlowersFragment (private val waterFilter : Boolean): Fragment() {
 
         initAdapter(adapter)
         initResearchBox(adapter)
-        initAddFlower()
 
         return view
     }
@@ -52,7 +51,6 @@ class MyFlowersFragment (private val waterFilter : Boolean): Fragment() {
     private fun initAdapter(adapter : MyFlowerAdapter){
         if(waterFilter){
             binding.researchBox.visibility = View.GONE
-            binding.addFlower.visibility = View.GONE
             filterWater(adapter)
         } else {
             myFlowerViewModel.flowerAndGarden.observe(viewLifecycleOwner, { flowerAndGardens ->
@@ -75,16 +73,6 @@ class MyFlowersFragment (private val waterFilter : Boolean): Fragment() {
 
             }
         })
-    }
-
-    private fun initAddFlower(){
-        binding.addFlower.setOnClickListener{
-            val testFragment = ResearchFlowersFragment()
-            val activity = requireActivity()
-
-            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,testFragment)
-                .addToBackStack(null).commit()
-        }
     }
 
     private fun filter(text: String, adapter : MyFlowerAdapter){

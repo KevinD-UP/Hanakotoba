@@ -35,10 +35,17 @@
         <entry key="app/src/main/res/drawable-mdpi/layout_bg.xml" value="0.3890625" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3890625" />
         <entry key="app/src/main/res/drawable/dialog_border.xml" value="0.3890625" />
+        <entry key="app/src/main/res/drawable/rounded_corner_textview.xml" value="0.3890625" />
+        <entry key="app/src/main/res/layout-land/activity_garden.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/fragment_flower_description.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/fragment_garden.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/fragment_my_flowers.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/fragment_research_flowers.xml" value="0.31569664902998235" />
+        <entry key="app/src/main/res/layout-land/fragment_user_flower_description.xml" value="0.31569664902998235" />
         <entry key="app/src/main/res/layout/activity_garden.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17502532928064843" />
         <entry key="app/src/main/res/layout/add_new_flower_fragment.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_flower_description.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_flower_description.xml" value="0.17151607963246554" />
         <entry key="app/src/main/res/layout/fragment_garden.xml" value="0.28940217391304346" />
         <entry key="app/src/main/res/layout/fragment_my_flowers.xml" value="0.28940217391304346" />
         <entry key="app/src/main/res/layout/fragment_research_flowers.xml" value="0.28940217391304346" />

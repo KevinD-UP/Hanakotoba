@@ -147,10 +147,24 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/DeleteFlowerBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:layout_marginRight="30dp"/>
+
+            <Button
+                android:id="@+id/UpdateFlowerBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:layout_marginRight="30dp"/>
+
+            <Button
                 android:id="@+id/AddPlantBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_plant" />
+                android:text="Add plant" />
 
 
         </LinearLayout>
