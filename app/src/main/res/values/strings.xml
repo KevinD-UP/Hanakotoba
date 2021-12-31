@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Hanakotoba</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="watering_interval">Watering Interval</string>
+    <string name="last_watering_date">Last Watering Date</string>
+    <string name="time">Time</string>
+    <string name="location">Location</string>
+    <string name="add_plant">Add Plant</string>
+    <string name="research">Research…</string>
+    <string name="sort_by">Sort by :</string>
+    <string name="last_watering">Last Watering</string>
+    <string name="_20_01_2021">20–01–2021</string>
+
 </resources>

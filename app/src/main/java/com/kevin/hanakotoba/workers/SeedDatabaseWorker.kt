@@ -26,7 +26,7 @@ class SeedDatabaseWorker(
                     JsonReader(inputStream.reader()).use { jsonReader ->
                         val flowerType = object : TypeToken<List<Flower>>() {}.type
                         val flowerList: List<Flower> = Gson().fromJson(jsonReader, flowerType)
-                        flowerList.map { flower -> flower.lastWateringDate = Calendar.getInstance() }
+                       /* flowerList.map { flower -> flower.lastWateringDate = Calendar.getInstance() }*/
                         val database = AppDatabase.getInstance(applicationContext)
                         database.flowerDao().insertAll(flowerList)
 

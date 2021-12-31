@@ -317,22 +317,6 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/deleteFlowerBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginEnd="10dp"
-            android:text="Delete" />
-
-        <Button
-            android:id="@+id/UpdateFlowerBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginEnd="10dp"
-            android:text="Update" />
-
-        <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -351,7 +335,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="Add to garden" />
+            android:text="ADD PLANT" />
 
     </LinearLayout>
 

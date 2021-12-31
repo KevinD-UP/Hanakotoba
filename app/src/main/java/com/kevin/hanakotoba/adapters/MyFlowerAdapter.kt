@@ -1,90 +1,93 @@
 package com.kevin.hanakotoba.adapters
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.os.Build
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.kevin.hanakotoba.Alarm
 import com.kevin.hanakotoba.UserFlowerDescriptionFragment
-import com.kevin.hanakotoba.data.AppDatabase
 import com.kevin.hanakotoba.data.Flower
-import com.kevin.hanakotoba.data.Garden
+import com.kevin.hanakotoba.data.FlowerAndGarden
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
 import com.kevin.hanakotoba.dependencyInjection.DatabaseModule
+import com.kevin.hanakotoba.viewmodels.FlowerDescriptionViewModel
 import dagger.hilt.android.internal.managers.FragmentComponentManager
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.util.*
+import java.util.concurrent.TimeUnit
 import java.io.File
 import kotlin.concurrent.thread
 
-class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
+class MyFlowerAdapter (private var flowerDescriptionViewModel: FlowerDescriptionViewModel) : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
 
-    private var flowerList = emptyList<Flower>()
-    private val databaseModule = DatabaseModule()
-
+    private var flowerList = emptyList<FlowerAndGarden>()
+    private lateinit var context : Context
     inner class VH (val binding : ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root){
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        context = parent.context
         return VH(binding)
     }
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val currentItem = flowerList[position]
-        holder.binding.userFlowerName.text = currentItem.name
+        val currentFlowerAndGarden = flowerList[position]
+        holder.binding.userFlowerName.text = currentFlowerAndGarden.flower.name
 
-        val imgFile = File(currentItem.imageUrl)
+        val msDiff = currentFlowerAndGarden.garden.nextWateringDate.timeInMillis - Calendar.getInstance().timeInMillis
+        val daysDiff = TimeUnit.MILLISECONDS.toDays(msDiff)
+        Log.d("TIME",daysDiff.toString())
+        val imgFile = File(currentFlowerAndGarden.imageUrl)
         if (imgFile.exists()) {
             val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
             holder.binding.imageView.setImageBitmap(myBitmap)
         }
 
 
-        if(currentItem.shouldBeWatered()) {
+        holder.binding.nextWateringTxt.text = "Water in $daysDiff days"
+        if(currentFlowerAndGarden.canBeWatered()) {
             holder.binding.waterButton.visibility = View.VISIBLE
         } else {
             holder.binding.waterButton.visibility = View.GONE
         }
 
         holder.binding.waterButton.setOnClickListener {
+            currentFlowerAndGarden.garden.lastWateringDate = currentFlowerAndGarden.garden.nextWateringDate
+            val copy = currentFlowerAndGarden.garden.nextWateringDate.clone() as Calendar
+            copy.add(Calendar.DATE,currentFlowerAndGarden.flower.wateringInterval)
+            currentFlowerAndGarden.garden.nextWateringDate = copy
 
-            Toast.makeText(
-                holder.itemView.context,
-                "Watered : ${currentItem.name}",
-                Toast.LENGTH_SHORT
-            ).show()
-            currentItem.watered()
-            runBlocking { // this: CoroutineScope
-                launch { // launch a new coroutine and continue
-                    databaseModule
-                            .providePlantDao(
-                                    databaseModule
-                                            .provideAppDatabase(holder.binding.waterButton.context)
-                            )
-                            .wateredFlower(currentItem.flower_id)
-                }
-            }
+            setAlarm(currentFlowerAndGarden,copy)
+            flowerDescriptionViewModel.updateFlowerInGarden(currentFlowerAndGarden.garden)
         }
 
         holder.itemView.setOnClickListener {
-
             val activity =  FragmentComponentManager.findActivity(holder.itemView.context) as AppCompatActivity
-
             val fragment : DialogFragment = UserFlowerDescriptionFragment()
             val bundle = Bundle()
-            bundle.putSerializable("flower", currentItem);
+            bundle.putSerializable("flower", currentFlowerAndGarden)
             fragment.arguments = bundle
-
             fragment.show(activity.supportFragmentManager,"dialog")
         }
+
+    }
+
+    private fun updateListWaterOnly(){
+
 
     }
 
@@ -92,9 +95,20 @@ class MyFlowerAdapter : RecyclerView.Adapter<MyFlowerAdapter.VH>() {
         return flowerList.size
     }
 
+
     @SuppressLint("NotifyDataSetChanged")
-    fun setFlower(flower :List<Flower> ){
+    fun setFlower(flower: List<FlowerAndGarden>){
+
+        Log.d("DEBUG","Setting flower list")
         this.flowerList = flower
         notifyDataSetChanged()
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun setAlarm(flower : FlowerAndGarden, calendar : Calendar){
+        val alarm = Alarm(context)
+        alarm.createNotificationChannel()
+        alarm.scheduleNotification(flower.flower.name,flower.garden.gardenId.toString(),calendar)
+    }
+
 }
