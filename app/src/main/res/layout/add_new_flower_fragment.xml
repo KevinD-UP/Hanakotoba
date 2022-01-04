@@ -110,6 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginEnd="10px"
+        android:textColor="@color/white"
         android:backgroundTint="@android:color/holo_green_dark"
         android:text="Add Flower" />
 
@@ -119,6 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginEnd="10px"
+        android:textColor="@color/white"
         android:text="Camera" />
 
     <Button
@@ -127,6 +129,7 @@
         android:layout_gravity="right"
         android:text="Gallery"
         android:layout_marginEnd="10px"
+        android:textColor="@color/white"
         android:id="@+id/choosePictureBtn"/>
 
     </LinearLayout>
