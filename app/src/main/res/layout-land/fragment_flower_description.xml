@@ -151,6 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delete"
+                android:backgroundTint="@android:color/holo_red_dark"
                 android:layout_marginRight="30dp"/>
 
             <Button
@@ -158,12 +159,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Update"
+                android:backgroundTint="@android:color/holo_blue_dark"
                 android:layout_marginRight="30dp"/>
 
             <Button
                 android:id="@+id/AddPlantBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_green_dark"
                 android:text="Add plant" />
 
 
