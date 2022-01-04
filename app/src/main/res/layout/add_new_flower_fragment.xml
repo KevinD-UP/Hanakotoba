@@ -118,13 +118,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginEnd="10px"
-        android:text="Take Picture" />
+        android:text="Camera" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="choose Picture"
+        android:text="Gallery"
         android:layout_marginEnd="10px"
         android:id="@+id/choosePictureBtn"/>
 
