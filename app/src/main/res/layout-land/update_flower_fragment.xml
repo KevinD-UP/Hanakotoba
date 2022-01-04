@@ -110,6 +110,7 @@
         android:text="Update Flower"
         android:layout_marginEnd="10px"
         android:backgroundTint="@android:color/holo_green_dark"
+        android:textColor="@color/white"
         android:id="@+id/updateFlowerBtn"/>
 
     <Button
@@ -118,6 +119,7 @@
         android:layout_gravity="right"
         android:text="Camera"
         android:layout_marginEnd="10px"
+        android:textColor="@color/white"
         android:id="@+id/takePictureBtn"/>
 
     <Button
@@ -126,6 +128,7 @@
         android:layout_gravity="right"
         android:text="Gallery"
         android:layout_marginEnd="10px"
+        android:textColor="@color/white"
         android:id="@+id/choosePictureBtn"/>
     </LinearLayout>
 
