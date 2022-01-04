@@ -105,7 +105,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
 
     private fun initDelete(){
         binding.deleteFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Delete ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Delete ${flower.flower.name}", Toast.LENGTH_SHORT).show()
             flowerDescriptionViewModel.deleteFlowerInGarden(flower.garden.gardenId)
             dismiss()
 
@@ -129,7 +129,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun initSave(calendar : Calendar){
         binding.saveBtn.setOnClickListener {
-            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Save ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Save new Date", Toast.LENGTH_SHORT).show()
             flower.garden.nextWateringDate = calendar
             flowerDescriptionViewModel.updateFlowerInGarden(flower.garden)
             setAlarm(calendar)
