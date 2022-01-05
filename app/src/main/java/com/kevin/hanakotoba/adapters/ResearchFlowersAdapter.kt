@@ -16,6 +16,7 @@ import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayout2Binding
 import dagger.hilt.android.internal.managers.FragmentComponentManager
 import android.graphics.BitmapFactory
+import android.util.Log
 
 import java.io.File
 
@@ -112,6 +113,8 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
     @SuppressLint("NotifyDataSetChanged")
     fun setFlower(flower :List<Flower> ){
         this.flowerList = flower
+
+        sortedList.clear()
         sortedList.addAll(flowerList)
         notifyDataSetChanged()
     }

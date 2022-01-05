@@ -70,6 +70,8 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
 
             activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, updateFlowerFragment)
                 .addToBackStack(null).commit()
+            dismiss()
+
         }
 
         return view

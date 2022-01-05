@@ -54,6 +54,7 @@ class Notification : BroadcastReceiver(){
 
 
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        /* TODO */
         manager.notify(Random.nextInt(0, 1000),notification)
     }
 

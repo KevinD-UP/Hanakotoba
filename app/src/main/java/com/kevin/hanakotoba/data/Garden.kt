@@ -1,6 +1,7 @@
 package com.kevin.hanakotoba.data
 
 import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
 import java.util.*
 
 /**
@@ -12,7 +13,7 @@ import java.util.*
 @Entity(
     tableName = "garden",
     foreignKeys = [
-        ForeignKey(entity = Flower::class, parentColumns = ["id"], childColumns = ["flower_id"])
+        ForeignKey(entity = Flower::class, parentColumns = ["id"], childColumns = ["flower_id"],onDelete =CASCADE)
     ]
 )
 data class Garden(

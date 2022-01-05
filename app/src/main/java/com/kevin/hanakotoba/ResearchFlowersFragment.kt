@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,9 @@ class ResearchFlowersFragment : Fragment() {
         binding.rvResearchFlowers.layoutManager = LinearLayoutManager(requireContext())
 
         researchViewModel = ViewModelProvider(this).get(ResearchFlowersViewModel::class.java)
+
         researchViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
+            Log.d("DEBUG","IM HERE ! ")
             adapter.setFlower(flower)
         })
 
@@ -67,6 +70,7 @@ class ResearchFlowersFragment : Fragment() {
                 adapter.setSortFilter()
             }
         }
+
         binding.addFlower.setOnClickListener{
             val addNewFlowerFragment = AddNewFlower()
             val activity = requireActivity()
@@ -83,6 +87,7 @@ class ResearchFlowersFragment : Fragment() {
         val filteredFlowers = mutableListOf<Flower>()
 
         researchViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
+            filteredFlowers.clear()
             for( current_flower in flower){
                 if(current_flower.name.lowercase().contains(text.lowercase())){
                     filteredFlowers.add(current_flower)
