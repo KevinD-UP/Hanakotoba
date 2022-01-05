@@ -131,6 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:backgroundTint="@android:color/holo_blue_dark"
         android:textColor="@color/white"
         android:layout_marginEnd="10px"
         android:text="Camera" />
@@ -139,6 +140,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:backgroundTint="@android:color/holo_blue_dark"
         android:text="Gallery"
         android:textColor="@color/white"
         android:layout_marginEnd="10px"
