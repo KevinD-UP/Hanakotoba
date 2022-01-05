@@ -49,7 +49,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding.timePicker.setText(String.format("%02d:%02d", currentFlowerTime.get(Calendar.HOUR_OF_DAY), currentFlowerTime.get(Calendar.MINUTE)))
 
         binding.deleteFlowerBtn.setOnClickListener {
-            deleteEvent(flower.flower.flower_id.toLong())
+            deleteEvent(flower.garden.gardenId)
         }
 
         displayWaterBtn()
@@ -147,6 +147,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
                 Toast.LENGTH_SHORT
             ).show()
             dialog.cancel()
+            dismiss()
         }
         builder.setNegativeButton("No") { dialog, _ ->
             dialog.cancel()
