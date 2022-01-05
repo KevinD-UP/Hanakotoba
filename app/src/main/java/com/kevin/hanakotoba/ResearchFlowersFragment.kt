@@ -86,7 +86,7 @@ class ResearchFlowersFragment : Fragment() {
 
         val filteredFlowers = mutableListOf<Flower>()
 
-        researchViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
+        researchViewModel.flowers.observe(viewLifecycleOwner, { flower ->
             filteredFlowers.clear()
             for( current_flower in flower){
                 if(current_flower.name.lowercase().contains(text.lowercase())){
