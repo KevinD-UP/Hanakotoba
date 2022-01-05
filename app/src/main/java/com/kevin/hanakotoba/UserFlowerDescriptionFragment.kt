@@ -55,7 +55,6 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         displayWaterBtn()
         setNextDate(currentFlowerTime)
         setTime(currentFlowerTime)
-        initDelete()
         initWater()
         initSave(currentFlowerTime)
 
@@ -101,15 +100,6 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
             timePicker.show()
         }
 
-    }
-
-    private fun initDelete(){
-        binding.deleteFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "Delete ${flower.flower.name}", Toast.LENGTH_SHORT).show()
-            flowerDescriptionViewModel.deleteFlowerInGarden(flower.garden.gardenId)
-            dismiss()
-
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
