@@ -16,7 +16,7 @@ class Alarm (val activity : Context){
      fun scheduleNotification(flower_name : String, id : String, calendar : Calendar) {
         val intent = Intent(activity, Notification::class.java)
         val title = flower_name
-        val message = "It's a fucking flower"
+        val message = "It's a flower"
         intent.putExtra(titleExtra,title)
         intent.putExtra(messageExtra,message)
         intent.setAction(id)

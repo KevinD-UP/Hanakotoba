@@ -49,13 +49,12 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding.timePicker.setText(String.format("%02d:%02d", currentFlowerTime.get(Calendar.HOUR_OF_DAY), currentFlowerTime.get(Calendar.MINUTE)))
 
         binding.deleteFlowerBtn.setOnClickListener {
-            deleteEvent(flower.flower.flower_id.toLong())
+            deleteEvent(flower.garden.gardenId)
         }
 
         displayWaterBtn()
         setNextDate(currentFlowerTime)
         setTime(currentFlowerTime)
-        initDelete()
         initWater()
         initSave(currentFlowerTime)
 
@@ -103,15 +102,6 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
 
     }
 
-    private fun initDelete(){
-        binding.deleteFlowerBtn.setOnClickListener {
-            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Delete ", Toast.LENGTH_SHORT).show()
-            flowerDescriptionViewModel.deleteFlowerInGarden(flower.garden.gardenId)
-            dismiss()
-
-        }
-    }
-
     @RequiresApi(Build.VERSION_CODES.O)
     fun initWater(){
         binding.waterFlowerBtn.setOnClickListener {
@@ -129,7 +119,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun initSave(calendar : Calendar){
         binding.saveBtn.setOnClickListener {
-            Toast.makeText(context, "[UserFlowerDescriptionFragment - onCreateView] Save ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Save new Date", Toast.LENGTH_SHORT).show()
             flower.garden.nextWateringDate = calendar
             flowerDescriptionViewModel.updateFlowerInGarden(flower.garden)
             setAlarm(calendar)
@@ -157,6 +147,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
                 Toast.LENGTH_SHORT
             ).show()
             dialog.cancel()
+            dismiss()
         }
         builder.setNegativeButton("No") { dialog, _ ->
             dialog.cancel()

@@ -113,7 +113,6 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
     @SuppressLint("NotifyDataSetChanged")
     fun setFlower(flower :List<Flower> ){
         this.flowerList = flower
-
         sortedList.clear()
         sortedList.addAll(flowerList)
         notifyDataSetChanged()
