@@ -16,7 +16,9 @@ import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayout2Binding
 import dagger.hilt.android.internal.managers.FragmentComponentManager
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.util.Log
+import com.kevin.hanakotoba.R
 
 import java.io.File
 
@@ -78,10 +80,11 @@ class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>()
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val currentItem = sortedList[position]
-        val imgFile = File(currentItem.imageUrl)
-        if (imgFile.exists()) {
-            val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
-            holder.binding.imageView.setImageBitmap(myBitmap)
+        if(currentItem.imageUrl != "") {
+            val localUri = Uri.parse(currentItem.imageUrl)
+            holder.binding.imageView.setImageURI(localUri)
+        }else {
+            holder.binding.imageView.setImageResource(R.drawable.flower)
         }
         holder.binding.userFlowerName.text = currentItem.name
         holder.binding.description.text = currentItem.description

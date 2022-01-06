@@ -88,7 +88,7 @@ class ResearchFlowersFragment : Fragment() {
 
         researchViewModel.flowers.observe(viewLifecycleOwner, { flower ->
             filteredFlowers.clear()
-            for( current_flower in flower){
+            for(current_flower in flower){
                 if(current_flower.name.lowercase().contains(text.lowercase())){
                     filteredFlowers.add(current_flower)
                 }
