@@ -12,7 +12,7 @@
     "name": "Abutilon",
     "latinName": "Abutilon x hybridum" ,
     "description": "Les abutilons sont des arbustes à fleurs dont la hauteur peut aller jusqu'à 3 mètres pour certaines espèces.",
-    "wateringInterval": 7,
+    "wateringInterval": 3,
     "imageUrl": ""
   },
   {
@@ -20,7 +20,7 @@
     "name": "Cactus de Noël",
     "latinName": "Schlumbergera" ,
     "description": "Ce sont des plantes épiphytes ou lithophytes de la zone néotropicale du Brésil.",
-    "wateringInterval": 7,
+    "wateringInterval": 4,
     "imageUrl": ""
   },
   {
@@ -28,7 +28,7 @@
     "name": "Cosmos bipinnatus",
     "latinName": "Cosmos bipinnatus" ,
     "description": "Le Cosmos bipinnatus, en langage courant, cosmos bipenné peut atteindre une grande taille, parfois supérieure à 1 m 50, mais les variétés actuelles sont plus compactes et généralement inférieure au mètre.",
-    "wateringInterval": 7,
+    "wateringInterval": 2,
     "imageUrl": ""
   },
   {
@@ -36,7 +36,7 @@
     "name": "Géranium vivace sanguin",
     "latinName": "Geranium sanguineum" ,
     "description": "Plante, non parfumée, hauteur à maturité 20 cm, largeur à maturité 40 cm, couleur de floraison rose, saison de floraison été, couleur du feuillage vert moyen, type de feuillage caduc...",
-    "wateringInterval": 7,
+    "wateringInterval": 1,
     "imageUrl": ""
   },
   {
@@ -52,7 +52,7 @@
     "name": "Anthémis",
     "latinName": "Argyranthemum frutescens" ,
     "description": "L’anthémis, merveilleuse vivace aux fleurs de pâquerette, offre une floraison du printemps à l’automne de toute beauté.",
-    "wateringInterval": 7,
+    "wateringInterval": 6,
     "imageUrl": ""
   },
   {
@@ -60,7 +60,7 @@
     "name": "Camomille",
     "latinName": "Chamaemelum nobile" ,
     "description": "La camomille est utilisée depuis des siècles pour ses vertus médicinales.",
-    "wateringInterval": 7,
+    "wateringInterval": 5,
     "imageUrl": ""
   },
   {
@@ -68,7 +68,7 @@
     "name": "Gloxinia",
     "latinName": "Gloxinia speciosa" ,
     "description": "Le gloxinia émerveille nos intérieurs grâce à sa magnifique floraison estivale",
-    "wateringInterval": 7,
+    "wateringInterval": 3,
     "imageUrl": ""
   },
   {
@@ -76,7 +76,7 @@
     "name": "Lotus",
     "latinName": " Nelumbo nucifera" ,
     "description": "Le lotus sacré est une plante aquatique, vivace grâce à sa tige en rhizome spongieux, épais, ramifié, portant des tubercules fixés dans le fond de l'étang.",
-    "wateringInterval": 7,
+    "wateringInterval": 4,
     "imageUrl": ""
   }
 ]
