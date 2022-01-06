@@ -86,7 +86,7 @@ class UpdateFlower : Fragment() {
             binding.imageView.setImageBitmap(myBitmap)
         }
 
-        viewModel = ViewModelProvider(this).get(UpdateFlowerViewModel::class.java)
+        viewModel = ViewModelProvider(this)[UpdateFlowerViewModel::class.java]
 
         binding.updateFlowerBtn.setOnClickListener {
             try {

@@ -33,9 +33,10 @@ class Alarm(val activity: Context) {
             calendar.timeInMillis,
             pendingIntent
         )
-        showAlert(calendar.timeInMillis, flower_name, message)
+        showAlert(calendar.timeInMillis, flower_name)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     fun cancelAlarm(flower_name: String, id: String) {
         val intent = Intent(activity, Notification::class.java)
         val title = flower_name
@@ -57,7 +58,7 @@ class Alarm(val activity: Context) {
     }
 
 
-    private fun showAlert(time: Long, title: String, message: String) {
+    private fun showAlert(time: Long, title: String) {
         val date = Date(time)
         val dateFormat = android.text.format.DateFormat.getLongDateFormat(activity)
         val timeFormat = android.text.format.DateFormat.getTimeFormat(activity)

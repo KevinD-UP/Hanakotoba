@@ -40,7 +40,7 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
         val bundle = arguments
 
         flower = bundle!!.getSerializable("flower") as Flower
-        flowerDescriptionViewModel = ViewModelProvider(this).get(FlowerDescriptionViewModel::class.java)
+        flowerDescriptionViewModel = ViewModelProvider(this)[FlowerDescriptionViewModel::class.java]
 
         binding = FragmentFlowerDescriptionBinding.bind(view)
 

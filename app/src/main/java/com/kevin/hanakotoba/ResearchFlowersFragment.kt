@@ -1,15 +1,12 @@
 package com.kevin.hanakotoba
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kevin.hanakotoba.adapters.ResearchFlowersAdapter
@@ -38,7 +35,7 @@ class ResearchFlowersFragment : Fragment() {
         binding.rvResearchFlowers.adapter = adapter
         binding.rvResearchFlowers.layoutManager = LinearLayoutManager(requireContext())
 
-        researchViewModel = ViewModelProvider(this).get(ResearchFlowersViewModel::class.java)
+        researchViewModel = ViewModelProvider(this)[ResearchFlowersViewModel::class.java]
 
         researchViewModel.flowers.observe(viewLifecycleOwner, { flower ->
             adapter.setFlower(flower)

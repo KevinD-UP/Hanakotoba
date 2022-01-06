@@ -33,8 +33,8 @@ class MyFlowersFragment (private val waterFilter : Boolean): Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_my_flowers,container,false)
 
-        myFlowerViewModel = ViewModelProvider(this).get(MyFlowerViewModel::class.java)
-        flowerDescriptionViewModel = ViewModelProvider(this).get(FlowerDescriptionViewModel::class.java)
+        myFlowerViewModel = ViewModelProvider(this)[MyFlowerViewModel::class.java]
+        flowerDescriptionViewModel = ViewModelProvider(this)[FlowerDescriptionViewModel::class.java]
 
         binding = FragmentMyFlowersBinding.bind(view)
 

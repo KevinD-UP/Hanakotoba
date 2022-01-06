@@ -1,4 +1,4 @@
-package com.kevin.hanakotoba.data;
+package com.kevin.hanakotoba.data
 
 import android.util.Log
 import androidx.room.Embedded

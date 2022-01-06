@@ -2,9 +2,8 @@ package com.kevin.hanakotoba.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
-import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,7 +22,6 @@ import com.kevin.hanakotoba.viewmodels.FlowerDescriptionViewModel
 import dagger.hilt.android.internal.managers.FragmentComponentManager
 import java.util.*
 import java.util.concurrent.TimeUnit
-import java.io.File
 
 
 class MyFlowerAdapter (private var flowerDescriptionViewModel: FlowerDescriptionViewModel) : RecyclerView.Adapter<MyFlowerAdapter.VH>() {

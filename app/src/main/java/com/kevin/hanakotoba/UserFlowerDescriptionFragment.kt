@@ -38,7 +38,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         binding = FragmentUserFlowerDescriptionBinding.bind(view)
         val bundle = arguments
         flower = bundle!!.getSerializable("flower") as FlowerAndGarden
-        flowerDescriptionViewModel = ViewModelProvider(this).get(FlowerDescriptionViewModel::class.java)
+        flowerDescriptionViewModel = ViewModelProvider(this)[FlowerDescriptionViewModel::class.java]
         binding.flowerNameTxt.text = flower.flower.name
 
         val dateFormat = SimpleDateFormat("d / M / yyyy", Locale.FRANCE)
@@ -139,6 +139,7 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         alarm.scheduleNotification(flower.flower.name,flower.garden.gardenId.toString(),calendar)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun deleteEvent(flower_id: Long){
         val builder = AlertDialog.Builder(this.requireContext())
         builder.setTitle("Delete ${flower.flower.name}")
