@@ -71,7 +71,7 @@ class AddNewFlower : Fragment() {
 
         imageFlower = ""
 
-        viewModel = ViewModelProvider(this).get(AddNewFlowerViewModel::class.java)
+        viewModel = ViewModelProvider(this)[AddNewFlowerViewModel::class.java]
 
         binding.addFlowerBtn.setOnClickListener {
             try {
