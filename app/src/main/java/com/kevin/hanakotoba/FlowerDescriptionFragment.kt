@@ -79,15 +79,16 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
     @SuppressLint("ResourceType", "SetTextI18n")
     private fun setDate(c: Calendar) {
         val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
+        val month = c.get(Calendar.MONTH) +1
         val day = c.get(Calendar.DAY_OF_MONTH)
         binding.datePicker.setText("$day/$month/$year")
 
         binding.datePicker.setOnClickListener{
             val pickDate = DatePickerDialog(requireContext(),3,
                 { _, year, monthOfYear, dayOfMonth ->
-                    Log.d("Date", "$dayOfMonth $monthOfYear $year")
-                    binding.datePicker.setText("$dayOfMonth/$monthOfYear/$year")
+                    val month = monthOfYear+1
+                    Log.d("Date", "$dayOfMonth $month $year")
+                    binding.datePicker.setText("$dayOfMonth/$month/$year")
                     c.set(year,monthOfYear,dayOfMonth)
 
                 }, year, month, day)
