@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.kevin.hanakotoba.Alarm
+import com.kevin.hanakotoba.R
 import com.kevin.hanakotoba.UserFlowerDescriptionFragment
 import com.kevin.hanakotoba.data.FlowerAndGarden
 import com.kevin.hanakotoba.databinding.ItemLayoutBinding
@@ -45,12 +47,12 @@ class MyFlowerAdapter (private var flowerDescriptionViewModel: FlowerDescription
         val msDiff = currentFlowerAndGarden.garden.nextWateringDate.timeInMillis - Calendar.getInstance().timeInMillis
         val daysDiff = TimeUnit.MILLISECONDS.toDays(msDiff)
         Log.d("TIME",daysDiff.toString())
-        val imgFile = File(currentFlowerAndGarden.flower.imageUrl)
-        if (imgFile.exists()) {
-            val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
-            holder.binding.imageView.setImageBitmap(myBitmap)
+        if(currentFlowerAndGarden.flower.imageUrl != "") {
+            val localUri = Uri.parse(currentFlowerAndGarden.flower.imageUrl)
+            holder.binding.imageView.setImageURI(localUri)
+        }else {
+            holder.binding.imageView.setImageResource(R.drawable.flower)
         }
-
 
         holder.binding.nextWateringTxt.text = "Water in $daysDiff days"
         if(currentFlowerAndGarden.canBeWatered()) {
