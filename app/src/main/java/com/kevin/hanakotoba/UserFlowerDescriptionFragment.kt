@@ -158,6 +158,10 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
         }
         val alert = builder.create()
         alert.show()
+
+        val alarm = Alarm(requireContext())
+        alarm.cancelAlarm(flower.flower.name,flower.garden.gardenId.toString())
+
     }
 
     private fun alertEvent(){
