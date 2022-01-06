@@ -119,12 +119,16 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun initSave(calendar : Calendar){
         binding.saveBtn.setOnClickListener {
-            Toast.makeText(context, "Save new Date", Toast.LENGTH_SHORT).show()
             flower.garden.nextWateringDate = calendar
-            flowerDescriptionViewModel.updateFlowerInGarden(flower.garden)
-            setAlarm(calendar)
-            dismiss()
-
+            if(flower.garden.nextWateringDate > Calendar.getInstance()) {
+                flowerDescriptionViewModel.updateFlowerInGarden(flower.garden)
+                setAlarm(calendar)
+                Toast.makeText(context, "Save new Date", Toast.LENGTH_SHORT).show()
+                dismiss()
+            }
+            else{
+                alertEvent()
+            }
         }
     }
 
@@ -150,6 +154,17 @@ class UserFlowerDescriptionFragment : BottomSheetDialogFragment() {
             dismiss()
         }
         builder.setNegativeButton("No") { dialog, _ ->
+            dialog.cancel()
+        }
+        val alert = builder.create()
+        alert.show()
+    }
+
+    private fun alertEvent(){
+        val builder = AlertDialog.Builder(this.requireContext())
+        builder.setTitle("Incorrect date")
+        builder.setMessage("Please choose a future date !")
+        builder.setPositiveButton("Okay") { dialog, _ ->
             dialog.cancel()
         }
         val alert = builder.create()
