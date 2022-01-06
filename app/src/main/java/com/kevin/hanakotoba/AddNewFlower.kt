@@ -82,7 +82,7 @@ class AddNewFlower : Fragment() {
                 val wateringInterval = binding.wateringInterval.text.toString()
                 val imageFlower = this.imageFlower
 
-                if((name != "" || latinName != "") && wateringInterval != "") {
+                if(name != "" && wateringInterval != "") {
                     val flowerToAdd = Flower(
                         name = name,
                         latinName = latinName,

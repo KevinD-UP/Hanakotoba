@@ -97,7 +97,7 @@ class UpdateFlower : Fragment() {
                 val wateringInterval = binding.wateringInterval.text.toString()
                 val imageFlower = this.imageFlower
 
-                if ((name != "" || latinName != "") && wateringInterval != "") {
+                if (name != "" && wateringInterval != "") {
                     val flowerToUpdate = Flower(
                         flowerId,
                         name = name,
