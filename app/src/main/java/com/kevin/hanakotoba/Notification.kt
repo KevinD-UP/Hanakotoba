@@ -33,7 +33,7 @@ class Notification : BroadcastReceiver(){
     @SuppressLint("LaunchActivityFromNotification")
     override fun onReceive(context: Context, intent : Intent) {
 
-       var mainActivity = Intent(context, GardenActivity::class.java)
+       val mainActivity = Intent(context, GardenActivity::class.java)
 
         mainActivity.putExtra("FromNotif",true)
         val notification  = NotificationCompat.Builder(context, channelID)
@@ -54,7 +54,6 @@ class Notification : BroadcastReceiver(){
 
 
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        /* TODO */
         manager.notify(Random.nextInt(0, 1000),notification)
     }
 

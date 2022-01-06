@@ -15,12 +15,8 @@ import com.kevin.hanakotoba.FlowerDescriptionFragment
 import com.kevin.hanakotoba.data.Flower
 import com.kevin.hanakotoba.databinding.ItemLayout2Binding
 import dagger.hilt.android.internal.managers.FragmentComponentManager
-import android.graphics.BitmapFactory
 import android.net.Uri
-import android.util.Log
 import com.kevin.hanakotoba.R
-
-import java.io.File
 
 
 class ResearchFlowersAdapter : RecyclerView.Adapter<ResearchFlowersAdapter.VH>() {

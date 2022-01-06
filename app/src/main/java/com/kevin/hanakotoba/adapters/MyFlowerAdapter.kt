@@ -80,11 +80,6 @@ class MyFlowerAdapter (private var flowerDescriptionViewModel: FlowerDescription
 
     }
 
-    private fun updateListWaterOnly(){
-
-
-    }
-
     override fun getItemCount(): Int {
         return flowerList.size
     }

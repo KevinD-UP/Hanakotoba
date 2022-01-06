@@ -1,13 +1,9 @@
 package com.kevin.hanakotoba
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentTransaction
 import com.kevin.hanakotoba.databinding.ActivityGardenBinding
 import dagger.hilt.android.AndroidEntryPoint
 

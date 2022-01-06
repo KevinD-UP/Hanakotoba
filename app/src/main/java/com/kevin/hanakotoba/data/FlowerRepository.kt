@@ -5,22 +5,15 @@ import javax.inject.Singleton
 
 /**
  * Repository module for handling data operations.
- *
- * Collecting from the Flows in [FlowerDao] is main-safe.  Room supports Coroutines and moves the
- * query execution off of the main thread.
  */
 @Singleton
 class FlowerRepository @Inject constructor(private val flowerDao: FlowerDao) {
 
     fun getFlowers() = flowerDao.getFlowers()
 
-    fun getFlower(flowerId: Int) = flowerDao.getFlower(flowerId)
-
     suspend fun insertFlower(flower: Flower) = flowerDao.insert(flower)
 
     suspend fun updateFlower(flower: Flower) = flowerDao.updateFlower(flower)
-
-/*    suspend fun wateredFlower(flowerId: Int) = flowerDao.wateredFlower(flowerId)*/
 
     suspend fun deleteFlower(flower: Flower) = flowerDao.deleteFlower(flower)
 

@@ -123,7 +123,7 @@ class AddNewFlower : Fragment() {
 
     private fun alertEvent(){
         val builder = AlertDialog.Builder(this.requireContext())
-        builder.setTitle("Can't update flower")
+        builder.setTitle("Can't add the new flower")
         builder.setMessage("Please fill all correctly required field !")
         builder.setPositiveButton("Okay") { dialog, _ ->
             dialog.cancel()

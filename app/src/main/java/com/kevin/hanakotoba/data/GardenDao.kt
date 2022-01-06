@@ -3,6 +3,9 @@ package com.kevin.hanakotoba.data
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * The Data Access Object for the Garden class.
+ */
 @Dao
 interface GardenDao {
     @Query("SELECT * FROM garden")

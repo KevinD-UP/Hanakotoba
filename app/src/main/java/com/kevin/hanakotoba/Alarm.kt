@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.kevin.hanakotoba.data.FlowerAndGarden
 import java.util.*
 
 class Alarm (val activity : Context){
@@ -15,9 +14,8 @@ class Alarm (val activity : Context){
     @RequiresApi(Build.VERSION_CODES.M)
      fun scheduleNotification(flower_name : String, id : String, calendar : Calendar) {
         val intent = Intent(activity, Notification::class.java)
-        val title = flower_name
-        val message = "It's a flower"
-        intent.putExtra(titleExtra,title)
+        val message = "Time to water !"
+        intent.putExtra(titleExtra, flower_name)
         intent.putExtra(messageExtra,message)
         intent.setAction(id)
 
@@ -35,7 +33,7 @@ class Alarm (val activity : Context){
             calendar.timeInMillis,
             pendingIntent
         )
-        showAlert(calendar.timeInMillis,title,message)
+        showAlert(calendar.timeInMillis, flower_name, message)
     }
 
 

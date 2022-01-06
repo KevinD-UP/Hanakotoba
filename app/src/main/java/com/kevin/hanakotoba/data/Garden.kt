@@ -6,9 +6,6 @@ import java.util.*
 
 /**
  * [Garden] represents when a user adds a [Flower] to their garden.
- *
- * Declaring the column info allows for the renaming of variables without implementing a
- * database migration, as the column name would not change.
  */
 @Entity(
     tableName = "garden",

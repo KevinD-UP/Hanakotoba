@@ -11,8 +11,6 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.kevin.hanakotoba.data.AppDatabase
 import com.kevin.hanakotoba.data.Flower
-import java.util.*
-
 
 class SeedDatabaseWorker(
     context: Context,
