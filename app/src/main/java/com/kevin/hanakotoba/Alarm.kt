@@ -17,7 +17,7 @@ class Alarm(val activity: Context) {
         val message = "Time to water !"
         intent.putExtra(titleExtra, flower_name)
         intent.putExtra(messageExtra, message)
-        intent.setAction(id)
+        intent.action = id
 
         val pendingIntent = PendingIntent.getBroadcast(
             activity,
@@ -42,7 +42,7 @@ class Alarm(val activity: Context) {
         val message = "It's a flower"
         intent.putExtra(titleExtra, title)
         intent.putExtra(messageExtra, message)
-        intent.setAction(id)
+        intent.action = id
         intent.putExtra("TAG", flower_name + id)
 
         val pendingIntent = PendingIntent.getBroadcast(
