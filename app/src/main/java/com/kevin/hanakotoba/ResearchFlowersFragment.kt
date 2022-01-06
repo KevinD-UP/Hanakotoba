@@ -40,8 +40,7 @@ class ResearchFlowersFragment : Fragment() {
 
         researchViewModel = ViewModelProvider(this).get(ResearchFlowersViewModel::class.java)
 
-        researchViewModel.flowers.observe(viewLifecycleOwner, Observer { flower ->
-            Log.d("DEBUG","IM HERE ! ")
+        researchViewModel.flowers.observe(viewLifecycleOwner, { flower ->
             adapter.setFlower(flower)
         })
 

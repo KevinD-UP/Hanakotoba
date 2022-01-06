@@ -1,6 +1,7 @@
 package com.kevin.hanakotoba
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
@@ -111,19 +112,12 @@ class UpdateFlower : Fragment() {
                         "Flower $name ($latinName) has been updated",
                         Toast.LENGTH_SHORT
                     ).show()
+                    this.requireActivity().supportFragmentManager.popBackStack()
                 } else {
-                    Toast.makeText(
-                        context,
-                        "Field aren't completed correctly, please verify informations",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    alertEvent()
                 }
             } catch (e: Exception) {
-                Toast.makeText(
-                    context,
-                    "Field aren't completed correctly, please verify informations",
-                    Toast.LENGTH_SHORT
-                ).show()
+                alertEvent()
             }
         }
 
@@ -155,5 +149,16 @@ class UpdateFlower : Fragment() {
         ).apply {
             tempImageFilePath = absolutePath
         }
+    }
+
+    private fun alertEvent(){
+        val builder = AlertDialog.Builder(this.requireContext())
+        builder.setTitle("Can't update flower")
+        builder.setMessage("Please fill all correctly required field !")
+        builder.setPositiveButton("Okay") { dialog, _ ->
+            dialog.cancel()
+        }
+        val alert = builder.create()
+        alert.show()
     }
 }

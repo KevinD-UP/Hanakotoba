@@ -71,7 +71,6 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
             activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, updateFlowerFragment)
                 .addToBackStack(null).commit()
             dismiss()
-
         }
 
         return view
@@ -139,10 +138,11 @@ class FlowerDescriptionFragment : BottomSheetDialogFragment() {
             flowerDescriptionViewModel.deleteFlower(flower)
             Toast.makeText(
                 context,
-                "[FlowerDescription - onCreateView] Delete : ${flower.name}",
+                "Delete : ${flower.name}",
                 Toast.LENGTH_SHORT
             ).show()
             dialog.cancel()
+            dismiss()
         }
         builder.setNegativeButton("No") { dialog, _ ->
             dialog.cancel()
