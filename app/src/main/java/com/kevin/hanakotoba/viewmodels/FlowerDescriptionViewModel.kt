@@ -35,7 +35,6 @@ class FlowerDescriptionViewModel @Inject internal constructor(
         }
         fun updateFlowerInGarden(gardenFlower : Garden) {
             viewModelScope.launch {
-       /*         flowerRepository.wateredFlower(flowerId)*/
                 gardenRepository.updateFlowerInGarden(gardenFlower)
             }
         }

@@ -5,6 +5,9 @@ import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * Repository module for handling data operations on [Garden] via [GardenDao].
+ */
 @Singleton
 class GardenRepository @Inject constructor(
     private val gardenPlantingDao: GardenDao
@@ -14,8 +17,6 @@ class GardenRepository @Inject constructor(
         gardenPlantingDao.isPlanted(plantId)
 
     fun getPlantedGardens() = gardenPlantingDao.getPlantedGardens()
-
-    suspend fun getFlowerFromGarden(id :  Int ) = gardenPlantingDao.getFlowerFromGarden(id)
 
     suspend fun insertFlowerInGarden(flower: Flower, lastWateringDate : Calendar) : Long {
         val garden = Garden(flower.flower_id)
